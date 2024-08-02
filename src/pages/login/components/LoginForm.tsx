@@ -1,6 +1,10 @@
 import React, { useState, useCallback } from 'react'
 
-export const LoginForm = () => {
+interface LoginFormProps {
+    onSubmit: (email: string, password: string) => void
+}
+
+export const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
 
@@ -13,7 +17,7 @@ export const LoginForm = () => {
     }, [])
 
     const handleSubmit = useCallback(() => {
-        console.log(email, password)
+        onSubmit(email, password)
       }, [email, password])
     
     return (
