@@ -9,5 +9,12 @@ export default defineConfig({
       '/api': { target: 'http://localhost:8000', autoRewrite: true },
       '/openapi.json': 'http://localhost:8000',
     }
-  }
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "./src/_mantine";`,
+      },
+    },
+  },
 })
