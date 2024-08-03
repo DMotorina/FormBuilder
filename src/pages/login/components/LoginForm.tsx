@@ -1,4 +1,7 @@
 import React, { useState, useCallback } from 'react'
+import { TextInput, PasswordInput, Button, Paper, Title } from '@mantine/core';
+
+import '../style.sass';
 
 interface LoginFormProps {
     onSubmit: (email: string, password: string) => void
@@ -21,8 +24,41 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
       }, [email, password])
     
     return (
-        <div>
-            <label>
+            <Paper className="form" radius={0} p={30}>
+            <Title order={2} className="title" ta="center" mt="md" mb={50}>
+                Welcome back!
+            </Title>
+            <TextInput 
+                label="Email" 
+                placeholder="Enter your email" 
+                size="md"
+                value={email}
+                onChange={handleEmailChange}
+                name="email" 
+                className='email'    
+            />
+
+            <PasswordInput 
+                label="Password" 
+                placeholder="Enter your password"  
+                mt="md" 
+                size="md" 
+                value={password} 
+                name="password" 
+                className='password' 
+                onChange={handlePasswordChange} 
+            />
+
+            <Button 
+                fullWidth 
+                mt="xl" 
+                size="md"
+                onClick={() => handleSubmit()}
+            >
+                Sign in
+            </Button>
+
+            {/* <label>
                 Email: 
                 <input 
                     value={email} 
@@ -30,9 +66,9 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
                     name="email" 
                     className='email' 
                 />
-            </label>
+            </label> */}
 
-            <label>
+            {/* <label>
                 Password: 
                 <input 
                     value={password} 
@@ -40,13 +76,13 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
                     className='password' 
                     onChange={handlePasswordChange} 
                 />
-            </label>
-            <button 
+            </label> */}
+            {/* <button 
                 type="submit"
                 onClick={() => handleSubmit()}
             >
                 Enter
-            </button>
-        </div>
+            </button> */}
+            </Paper>
     )
 }

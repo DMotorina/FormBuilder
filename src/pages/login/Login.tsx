@@ -1,3 +1,5 @@
+import '@mantine/core/styles.css';
+import './style.sass'
 import React, {useCallback} from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { login } from './action';
@@ -16,9 +18,10 @@ export const Login = () => {
     )
 
     return (
-        <div>
+        <div className="wrapper">
             {error ? <p className="error-message"> {error} </p> : null}
             <LoginForm onSubmit={onSubmit} />
         </div>
+
     )
 }
