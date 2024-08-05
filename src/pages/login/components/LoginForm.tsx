@@ -82,7 +82,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
                     component="a"
                     size="md"
                     href="/signup"
-                    color="#DE8C73"
+                    color="#"
                     onClick={() => window.location.href = '/signup'}
                 >
                     Sign up
