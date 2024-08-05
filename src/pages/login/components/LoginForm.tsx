@@ -1,7 +1,7 @@
+import '../style.sass';
+
 import React, { useState, useCallback } from 'react'
 import { TextInput, PasswordInput, Button, Paper, Title } from '@mantine/core';
-
-import '../style.sass';
 
 interface LoginFormProps {
     onSubmit: (email: string, password: string) => void
@@ -24,8 +24,8 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
       }, [email, password])
     
     return (
-            <Paper className="form" radius={0} p={30}>
-            <Title order={2} className="title" ta="center" mt="md" mb={50}>
+        <Paper className="login__form" radius={0} p={30}>
+            <Title order={2} className="login__title" ta="center" mt="md" mb={50}>
                 Welcome back!
             </Title>
             <TextInput 
@@ -35,7 +35,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
                 value={email}
                 onChange={handleEmailChange}
                 name="email" 
-                className='email'    
+                className='login__email'    
             />
 
             <PasswordInput 
@@ -45,7 +45,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
                 size="md" 
                 value={password} 
                 name="password" 
-                className='password' 
+                className='login__password' 
                 onChange={handlePasswordChange} 
             />
 
@@ -56,33 +56,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
                 onClick={() => handleSubmit()}
             >
                 Sign in
-            </Button>
-
-            {/* <label>
-                Email: 
-                <input 
-                    value={email} 
-                    onChange={handleEmailChange} 
-                    name="email" 
-                    className='email' 
-                />
-            </label> */}
-
-            {/* <label>
-                Password: 
-                <input 
-                    value={password} 
-                    name="password" 
-                    className='password' 
-                    onChange={handlePasswordChange} 
-                />
-            </label> */}
-            {/* <button 
-                type="submit"
-                onClick={() => handleSubmit()}
-            >
-                Enter
-            </button> */}
-            </Paper>
+            </Button> 
+        </Paper>
     )
 }

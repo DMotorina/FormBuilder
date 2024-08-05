@@ -8,6 +8,16 @@ $mantine-breakpoint-md: '62em'
 $mantine-breakpoint-lg: '75em'
 $mantine-breakpoint-xl: '88em'
 
+body
+  margin: 0
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 100vw
+  height: 100vh
+  min-width: calc(20rem * var(--mantine-scale))
+  min-height: 100vh
+
 @function rem($value) 
   @return #{math.div(math.div($value, $value * 0 + 1), 16)}rem
 
