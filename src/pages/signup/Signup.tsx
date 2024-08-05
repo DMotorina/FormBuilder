@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-export const SignIn = () => {
+export const Signup = () => {
     return (
         <div>
-            <h1>I'm sign in page!</h1>
+            <h1>I'm sign up page!</h1>
         </div>
     )
 }
