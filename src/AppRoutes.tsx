@@ -7,6 +7,7 @@ import { Signup } from './pages/signup/Signup';
 import { AuthOutlet } from './shared/outlets/auth';
 import { InitOutlet } from './shared/outlets/init';
 import { PrivateOutlet } from './shared/outlets/private';
+import { FormsPage } from './pages/forms/FormsPage';
 
 export const AppRoutes = () => {
     return (
@@ -20,6 +21,7 @@ export const AppRoutes = () => {
                 <Route path="/" element={<MainPage />} />
               </Route>
             </Route>
+            <Route path="/forms" element={<FormsPage />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/signup" element={<Signup />} />
         </Routes>
