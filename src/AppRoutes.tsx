@@ -10,6 +10,7 @@ import { PrivateOutlet } from './shared/outlets/private';
 import { FormsPage } from './pages/forms/FormsPage';
 
 export const AppRoutes = () => {
+  
     return (
       <BrowserRouter>
         <Routes>
