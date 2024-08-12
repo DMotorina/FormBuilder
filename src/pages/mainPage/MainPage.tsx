@@ -20,7 +20,7 @@ export const MainPage = () => {
     }
 
     return (
-        <div>
+        <div className='main'>
             <HeaderForm />
 
             <Dashboards />
