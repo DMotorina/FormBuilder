@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useAppDispatch } from '../../../hooks';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { logout } from '../../login/action';
 
 import { Menu, Burger, Container, Drawer, Input, Avatar } from '@mantine/core';
@@ -14,6 +14,9 @@ export const HeaderForm = () => {
 
     const [opened, { open, close }] = useDisclosure(false);
 
+    const firstName = useAppSelector((state) => state.user.data?.first_name);
+    const lastName = useAppSelector((state) => state.user.data?.last_name);
+
     return (
       <header className="header">
         <Container size="md">
@@ -25,7 +28,7 @@ export const HeaderForm = () => {
             <Input placeholder="Search" leftSection={<IconSearch size={16} />} />
             <Menu shadow="md" width={200}>
               <Menu.Target>
-                <Avatar name="Kate Kok" color="initials" />
+                <Avatar name={`${firstName} ${lastName}`} color="initials" />
               </Menu.Target>
               <Menu.Dropdown>
                 <Menu.Item onClick={() => dispatch(logout())}>
