@@ -18,3 +18,22 @@ export const getDashboardsDatas = createAsyncThunk(
       }
     }
   )
+
+export const addDashboard = createAsyncThunk<
+  { name: string },
+  {
+    rejectValue: string
+  }
+>('dashboard/addDashboard', async ({ name }, { rejectWithValue }) => {
+    try {
+      const response = await httpClient.post(
+        '/api/v1/dashboards/', 
+        { name },
+        config
+      )
+
+      return response.data
+    } catch (error) {
+      return rejectWithValue('')
+    }
+  })

@@ -1,15 +1,12 @@
 import * as React from 'react';
-import { QuestionForm } from './components/questionForm';
-import { HeaderForm } from './components/headerForm';
-import '@mantine/core/styles.css';
+import { useAppSelector } from '../../hooks';
+import { Button, Text } from '@mantine/core';
 
 import './style.sass'
 export const FormsPage = () => {
     return (
         <div>
-            <HeaderForm />
-
-            <QuestionForm />
+            I'm form!
         </div>
     )
 }

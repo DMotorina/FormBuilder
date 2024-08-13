@@ -8,6 +8,7 @@ import { getDashboardsDatas } from './action';
 
 export const MainPage = () => {
     const loading = useAppSelector((state) => state.dashboard.loadingDashboard)
+    console.log('--loading', loading)
 
     const dispatch = useAppDispatch()
   
