@@ -5,7 +5,7 @@ import { Button, Text } from '@mantine/core';
 import './style.sass'
 export const FormsPage = () => {
     return (
-        <div>
+        <div className='formPage'>
             I'm form!
         </div>
     )

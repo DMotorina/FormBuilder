@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
-import { Button, Container, Flex, Modal, TextInput } from '@mantine/core';
+import { Button, Container, Flex, Modal, Tabs, TextInput } from '@mantine/core';
 import { Forms } from './forms';
 import { useDisclosure } from '@mantine/hooks';
 import { FormsPage } from '../../forms/FormsPage';
@@ -31,37 +31,38 @@ export const Dashboards = () => {
         dispatch(addDashboard({name: text}))
     }
 
+    
+
     return (
         <div>
             <div className='dashboards'>
-                <Flex
-                    direction={{ base: 'row', sm: 'row' }}
-                    gap={{ base: 'sm', sm: 'lg' }}
-                    justify={{ base: 'center', sm: 'center' }}
-                >
+            <Tabs defaultValue="first">
+                <Tabs.List>
                     {dashboards?.map(({name, uuid}) => (
-                        <Button 
+                        <Tabs.Tab 
+                            value={name}
                             key={uuid} 
                             className='test' 
                             onClick={handleAddClick}
                         >
                             {name}
-                        </Button>
+                            <Button variant="transparent">X</Button>
+                        </Tabs.Tab>
                     ))}
+                <Button variant="outline" ml="auto" mr={10} onClick={open} mt={10}>Add new dashboard</Button>
+                </Tabs.List>
+            </Tabs>
+            </div>
 
-                    <NewDashboardForm 
+            {showMessage && <FormsPage />}
+
+            <NewDashboardForm 
                         opened={opened} 
                         close={close}
                         text={text}
                         handleAddDashboard={handleAddDashboard}
                         onChangeTextDashboard={onChangeTextDashboard}
                     />
-
-                    <Button onClick={open}>+</Button>
-                </Flex>
-            </div>
-
-            {showMessage && <FormsPage />}
         </div>
     )
 }
