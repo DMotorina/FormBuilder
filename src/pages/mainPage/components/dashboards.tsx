@@ -6,6 +6,7 @@ import { useDisclosure } from '@mantine/hooks';
 import { FormsPage } from '../../forms/FormsPage';
 import { NewDashboardForm } from './newDashboardForm';
 import { addDashboard } from '../action';
+import { Dashboard } from '../../dashboard/dashboard';
 
 
 export const Dashboards = () => {
@@ -31,38 +32,41 @@ export const Dashboards = () => {
         dispatch(addDashboard({name: text}))
     }
 
-    
 
     return (
         <div>
             <div className='dashboards'>
-            <Tabs defaultValue="first">
-                <Tabs.List>
-                    {dashboards?.map(({name, uuid}) => (
-                        <Tabs.Tab 
-                            value={name}
-                            key={uuid} 
-                            className='test' 
-                            onClick={handleAddClick}
-                        >
-                            {name}
-                            <Button variant="transparent">X</Button>
-                        </Tabs.Tab>
-                    ))}
-                <Button variant="outline" ml="auto" mr={10} onClick={open} mt={10}>Add new dashboard</Button>
-                </Tabs.List>
-            </Tabs>
+                <Tabs defaultValue="Default Dashboard">
+                    <Tabs.List>
+                        {dashboards?.map(({name, uuid}) => (
+                            <Dashboard 
+                                key={uuid} 
+                                name={name}
+                                handleAddClick={handleAddClick}
+                            />
+                        ))}
+                    <Button 
+                        variant="outline" 
+                        ml="auto" 
+                        mr={10} 
+                        onClick={open} 
+                        mt={10}
+                    >
+                        Add new dashboard
+                    </Button>
+                    </Tabs.List>
+                </Tabs>
             </div>
 
             {showMessage && <FormsPage />}
 
             <NewDashboardForm 
-                        opened={opened} 
-                        close={close}
-                        text={text}
-                        handleAddDashboard={handleAddDashboard}
-                        onChangeTextDashboard={onChangeTextDashboard}
-                    />
+                opened={opened} 
+                close={close}
+                text={text}
+                handleAddDashboard={handleAddDashboard}
+                onChangeTextDashboard={onChangeTextDashboard}
+            />
         </div>
     )
 }
