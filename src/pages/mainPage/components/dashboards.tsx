@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
-import { Button, Container, Flex, Modal, Tabs, TextInput } from '@mantine/core';
+import { Button, Container, Flex, Modal, Tabs, TextInput, ThemeIcon } from '@mantine/core';
 import { Forms } from './forms';
 import { useDisclosure } from '@mantine/hooks';
 import { FormsPage } from '../../forms/FormsPage';
 import { NewDashboardForm } from './newDashboardForm';
 import { addDashboard } from '../action';
 import { Dashboard } from '../../dashboard/dashboard';
+import { IconPlus, IconSettingsUp } from '@tabler/icons-react';
 
 
 export const Dashboards = () => {
@@ -37,23 +38,25 @@ export const Dashboards = () => {
         <div>
             <div className='dashboards'>
                 <Tabs defaultValue="Default Dashboard">
-                    <Tabs.List>
+                    <Tabs.List justify="center">
                         {dashboards?.map(({name, uuid}) => (
                             <Dashboard 
                                 key={uuid} 
+                                uuid={uuid}
                                 name={name}
                                 handleAddClick={handleAddClick}
                             />
                         ))}
-                    <Button 
-                        variant="outline" 
-                        ml="auto" 
-                        mr={10} 
-                        onClick={open} 
-                        mt={10}
-                    >
-                        Add new dashboard
-                    </Button>
+                        <ThemeIcon 
+                            variant="transparent"
+                            onClick={open} 
+                            className='dashboards__add'
+                            // mr={0}
+                            // mt={0}
+                            style={{ cursor: 'pointer' }}
+                        >
+                            <IconPlus style={{ width: '80%', height: '80%' }} />
+                        </ThemeIcon>
                     </Tabs.List>
                 </Tabs>
             </div>

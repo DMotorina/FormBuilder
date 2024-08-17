@@ -19,6 +19,7 @@ export const getDashboardsDatas = createAsyncThunk(
     }
   )
 
+
 export const addDashboard = createAsyncThunk<
   { name: string },
   {
@@ -35,5 +36,20 @@ export const addDashboard = createAsyncThunk<
       return response.data
     } catch (error) {
       return rejectWithValue('')
+    }
+  })
+
+  export const removeDashboard = createAsyncThunk<
+  { uuid: string },
+  { rejectValue: {} }
+>('dashboard/removeDashboard', async (uuid, { rejectWithValue }) => {
+    try {
+      const response = await httpClient.delete(
+        `/api/v1/dashboards/${uuid}`, 
+        config
+      )
+      return { uuid }
+    } catch (error) {
+      return rejectWithValue({})
     }
   })
