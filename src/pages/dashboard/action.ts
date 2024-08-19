@@ -22,9 +22,7 @@ export const getDashboardsDatas = createAsyncThunk(
 
 export const addDashboard = createAsyncThunk<
   { name: string },
-  {
-    rejectValue: string
-  }
+  { rejectValue: string }
 >('dashboard/addDashboard', async ({ name }, { rejectWithValue }) => {
     try {
       const response = await httpClient.post(
@@ -35,12 +33,14 @@ export const addDashboard = createAsyncThunk<
 
       return response.data
     } catch (error) {
-      return rejectWithValue('')
+      return rejectWithValue('Ошибка при добавлении дашборда')
     }
-  })
+  }
+)
 
   export const removeDashboard = createAsyncThunk<
   { uuid: string },
+  string,
   { rejectValue: {} }
 >('dashboard/removeDashboard', async (uuid, { rejectWithValue }) => {
     try {

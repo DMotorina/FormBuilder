@@ -1,8 +1,8 @@
+import '../../style.sass'
+
 import React from 'react';
 
 import { Button, Flex, Modal } from '@mantine/core';
-
-import '../../style.sass'
 
 interface RemoveModalProps {
     close: () => void

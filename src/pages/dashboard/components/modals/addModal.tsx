@@ -1,8 +1,8 @@
+import '../../style.sass';
+
 import React from 'react';
 
 import { Button, Modal, TextInput } from '@mantine/core';
-
-import '../../style.sass';
 
 interface AddModalProps {
     text: string
