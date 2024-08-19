@@ -39,18 +39,12 @@ export const Dashboard: React.FC<DashboardProps> = ({uuid, name, handleAddClick}
 
                 <Menu trigger="click" position="bottom" withArrow offset={0}>
                     <Menu.Target>
-                        <Button 
-                            mb={3}
-                            size="xs"
+                        <ThemeIcon 
                             variant="transparent"
                             className='dashboards__delete'
                         >
-                            <ThemeIcon 
-                                variant="transparent"
-                            >
-                                <IconTriangleInvertedFilled style={{ width: '35%', height: '35%' }} />
-                            </ThemeIcon>
-                        </Button>
+                            <IconTriangleInvertedFilled style={{ width: '35%', height: '35%' }} />
+                        </ThemeIcon>
                     </Menu.Target>
                     
                     <Menu.Dropdown>
