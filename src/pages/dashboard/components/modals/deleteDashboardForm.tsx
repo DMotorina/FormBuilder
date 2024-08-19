@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button, Flex, Modal, TextInput } from '@mantine/core';
-import '../style.sass'
+import '../../style.sass'
 
 export const DeleteDashboardForm = ({ opened, close, handleRemoveDashboard }) => {
     return (

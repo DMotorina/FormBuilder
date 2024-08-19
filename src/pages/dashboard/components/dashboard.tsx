@@ -1,14 +1,14 @@
 import React from 'react';
 
-import { Tabs, Button, ThemeIcon, Menu, Input, rem } from '@mantine/core';
+import { Tabs, Buton, ThemeIcon, Menu, Input, rem } from '@mantine/core';
 
-import './style.sass'
+import '../style.sass'
 import { useDisclosure } from '@mantine/hooks';
-import { DeleteDashboardForm } from './components/deleteDashboardForm';
+import { DeleteDashboardForm } from './modals/deleteDashboardForm';
 import { IconTrash, IconTriangleInvertedFilled } from '@tabler/icons-react';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { removeDashboard } from './action';
-import { AlertModal } from './components/alertModal';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
+import { removeDashboard } from '../action';
+import { AlertModal } from './modals/alertModal';
 
 interface DashboardProps {
     key: string

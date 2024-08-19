@@ -1,5 +1,5 @@
 import { createSlice, SliceCaseReducers } from '@reduxjs/toolkit'
-import { addDashboard, getDashboardsDatas, removeDashboard } from '../dashboard/action'
+import { addDashboard, getDashboardsDatas, removeDashboard } from './action'
 import { Dashboard } from './types'
 
 interface State {

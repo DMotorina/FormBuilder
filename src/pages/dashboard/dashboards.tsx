@@ -1,13 +1,12 @@
 import React, {useState} from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { Button, Container, Flex, Modal, Tabs, TextInput, ThemeIcon } from '@mantine/core';
-import { Forms } from './forms';
+import { Tabs, ThemeIcon } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { FormsPage } from '../forms/FormsPage';
-import { NewDashboardForm } from './components/newDashboardForm';
+import { NewDashboardForm } from './components/modals/newDashboardForm';
 import { addDashboard } from './action';
-import { Dashboard } from './dashboard';
-import { IconPlus, IconSettingsUp } from '@tabler/icons-react';
+import { Dashboard } from './components/dashboard';
+import { IconPlus } from '@tabler/icons-react';
 
 
 export const Dashboards = () => {
@@ -16,6 +15,7 @@ export const Dashboards = () => {
     const dashboards = useAppSelector((state) => state.dashboard.dashboards)
 
     const [showMessage, setShowMessage] = React.useState(false);
+    const [error, setError] = useState('');
 
     const [opened, { open, close }] = useDisclosure(false);
     
@@ -27,10 +27,17 @@ export const Dashboards = () => {
 
     const onChangeTextDashboard = (event) => {  
         setText(event.target.value)
+        setError('');
     }
 
     const handleAddDashboard = () => {
+        if (text.length < 3) {
+            setError('The name must contain at least 3 characters');
+            return; 
+        }
+
         dispatch(addDashboard({name: text}))
+        close();
     }
 
 
@@ -65,6 +72,7 @@ export const Dashboards = () => {
                 opened={opened} 
                 close={close}
                 text={text}
+                error={error}
                 handleAddDashboard={handleAddDashboard}
                 onChangeTextDashboard={onChangeTextDashboard}
             />
