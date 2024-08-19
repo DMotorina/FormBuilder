@@ -25,7 +25,7 @@ export const Dashboards = () => {
 
     const [text, setText] = useState("")
 
-    const onChangeTextDashboard = (event) => {  
+    const onChangeTextDashboard = (event: React.ChangeEvent<HTMLInputElement>) => {
         setText(event.target.value)
         setError('');
     }
