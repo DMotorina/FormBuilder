@@ -1,10 +1,25 @@
-import * as React from 'react';
+import React from 'react';
+
 import { Modal } from '@mantine/core';
+
 import '../../style.sass'
 
-export const WarningModal = ({ opened, close}) => {
+interface RWarningModalProps {
+    close: () => void
+    opened: boolean
+} 
+
+export const WarningModal: React.FC<RWarningModalProps> = ({ 
+    close,
+    opened, 
+}) => {
     return (
-        <Modal opened={opened} onClose={close} title="You can't delete the last dashboard" centered>
+        <Modal 
+            centered
+            opened={opened} 
+            onClose={close} 
+            title="You can't delete the last dashboard" 
+        >
         </Modal>
     )
 }
