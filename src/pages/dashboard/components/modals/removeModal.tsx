@@ -1,10 +1,27 @@
-import * as React from 'react';
-import { Button, Flex, Modal, TextInput } from '@mantine/core';
+import React from 'react';
+
+import { Button, Flex, Modal } from '@mantine/core';
+
 import '../../style.sass'
 
-export const RemoveModal = ({ opened, close, handleRemoveDashboard }) => {
+interface RemoveModalProps {
+    close: () => void
+    opened: boolean
+    handleRemoveDashboard: () => void
+} 
+
+export const RemoveModal: React.FC<RemoveModalProps> = ({ 
+    close,
+    opened, 
+    handleRemoveDashboard
+}) => {
     return (
-        <Modal opened={opened} onClose={close} title="Delete your dashboard?" centered>
+        <Modal 
+            centered
+            opened={opened} 
+            onClose={close}
+            title="Delete your dashboard?" 
+        >
             <Flex
                 mih={50}
                 gap="md"
@@ -13,8 +30,20 @@ export const RemoveModal = ({ opened, close, handleRemoveDashboard }) => {
                 direction="row"
                 wrap="wrap"
             >
-                <Button variant="filled" color="red" onClick={handleRemoveDashboard}>Yes</Button>
-                <Button variant="filled" color="green" onClick={close}>No</Button>
+                <Button 
+                    variant="filled" 
+                    color="red" 
+                    onClick={handleRemoveDashboard}
+                >
+                    Yes
+                </Button>
+                <Button 
+                    variant="filled" 
+                    color="green" 
+                    onClick={close}
+                >
+                    No
+                </Button>
             </Flex>
         </Modal>
     )
