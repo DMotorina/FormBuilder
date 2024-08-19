@@ -1,10 +1,8 @@
 import * as React from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { logout } from '../login/action';
-import { Button, Container } from '@mantine/core';
 import { HeaderForm } from './components/headerForm';
-import { Dashboards } from './components/dashboards';
-import { getDashboardsDatas } from './action';
+import { Dashboards } from '../dashboard/dashboards';
+import { getDashboardsDatas } from '../dashboard/action';
 
 export const MainPage = () => {
     const loading = useAppSelector((state) => state.dashboard.loadingDashboard)
@@ -22,7 +20,6 @@ export const MainPage = () => {
     return (
         <div className='main'>
             <HeaderForm />
-
             <Dashboards />
         </div>
     )

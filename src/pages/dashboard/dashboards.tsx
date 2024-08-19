@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import { useAppDispatch, useAppSelector } from '../../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { Button, Container, Flex, Modal, Tabs, TextInput, ThemeIcon } from '@mantine/core';
 import { Forms } from './forms';
 import { useDisclosure } from '@mantine/hooks';
-import { FormsPage } from '../../forms/FormsPage';
-import { NewDashboardForm } from './newDashboardForm';
-import { addDashboard } from '../action';
-import { Dashboard } from '../../dashboard/dashboard';
+import { FormsPage } from '../forms/FormsPage';
+import { NewDashboardForm } from './components/newDashboardForm';
+import { addDashboard } from './action';
+import { Dashboard } from './dashboard';
 import { IconPlus, IconSettingsUp } from '@tabler/icons-react';
 
 

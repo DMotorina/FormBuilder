@@ -7,7 +7,7 @@ import { useDisclosure } from '@mantine/hooks';
 import { DeleteDashboardForm } from './components/deleteDashboardForm';
 import { IconTrash, IconTriangleInvertedFilled } from '@tabler/icons-react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { removeDashboard } from '../mainPage/action';
+import { removeDashboard } from './action';
 import { AlertModal } from './components/alertModal';
 
 interface DashboardProps {
