@@ -6,8 +6,9 @@ import './style.sass'
 import { useDisclosure } from '@mantine/hooks';
 import { DeleteDashboardForm } from './components/deleteDashboardForm';
 import { IconTrash, IconTriangleInvertedFilled } from '@tabler/icons-react';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { removeDashboard } from '../mainPage/action';
+import { AlertModal } from './components/alertModal';
 
 interface DashboardProps {
     key: string
@@ -17,8 +18,11 @@ interface DashboardProps {
 
 export const Dashboard: React.FC<DashboardProps> = ({uuid, name, handleAddClick}) => {
     const dispatch = useAppDispatch()
+    
+    const dashboards = useAppSelector((state) => state.dashboard.dashboards)
 
     const [opened, { open, close }] = useDisclosure(false);
+
 
     const handleRemoveDashboard = () => {
         dispatch(removeDashboard(uuid))
@@ -65,11 +69,22 @@ export const Dashboard: React.FC<DashboardProps> = ({uuid, name, handleAddClick}
                 </Menu>                
             </Tabs.Tab>
 
-            <DeleteDashboardForm 
-                opened={opened} 
-                close={close}
-                handleRemoveDashboard={handleRemoveDashboard}
-            />
+            {dashboards?.length > 1 ? 
+            (
+                <DeleteDashboardForm 
+                    opened={opened} 
+                    close={close}
+                    handleRemoveDashboard={handleRemoveDashboard}
+                />
+            ) 
+                : 
+            (
+                <AlertModal 
+                    opened={opened} 
+                    close={close}
+                />
+            )
+            }
         </>
     )
 }

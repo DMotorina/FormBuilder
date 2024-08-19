@@ -51,8 +51,6 @@ export const Dashboards = () => {
                             variant="transparent"
                             onClick={open} 
                             className='dashboards__add'
-                            // mr={0}
-                            // mt={0}
                             style={{ cursor: 'pointer' }}
                         >
                             <IconPlus style={{ width: '80%', height: '80%' }} />

@@ -41,8 +41,10 @@ interface State {
       builder.addCase(removeDashboard.pending, (state) => {
         state.error = null
       })
-      builder.addCase(removeDashboard.fulfilled, (state, { payload }) => {
-        state.dashboards = state.dashboards?.filter((element) => element.uuid !== payload.uuid)
+      builder.addCase(removeDashboard.fulfilled, (state, { payload }) => {        
+        state.dashboards = state.dashboards?.filter(
+          (element) => element.uuid !== payload.uuid
+        );
       })
       builder.addCase(removeDashboard.rejected, (state, { payload }) => {
         state.error = payload

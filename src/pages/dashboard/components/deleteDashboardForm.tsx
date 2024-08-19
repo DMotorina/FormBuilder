@@ -4,7 +4,7 @@ import '../style.sass'
 
 export const DeleteDashboardForm = ({ opened, close, handleRemoveDashboard }) => {
     return (
-        <Modal opened={opened} title="Delete your dashboard?" centered>
+        <Modal opened={opened} onClose={close} title="Delete your dashboard?" centered>
             <Flex
                 mih={50}
                 gap="md"
