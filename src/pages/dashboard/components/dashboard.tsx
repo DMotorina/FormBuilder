@@ -4,11 +4,11 @@ import { Tabs, Buton, ThemeIcon, Menu, Input, rem } from '@mantine/core';
 
 import '../style.sass'
 import { useDisclosure } from '@mantine/hooks';
-import { DeleteDashboardForm } from './modals/deleteDashboardForm';
+import { RemoveModal } from './modals/removeModal';
 import { IconTrash, IconTriangleInvertedFilled } from '@tabler/icons-react';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { removeDashboard } from '../action';
-import { AlertModal } from './modals/alertModal';
+import { WarningModal } from './modals/warningModal';
 
 interface DashboardProps {
     key: string
@@ -65,7 +65,7 @@ export const Dashboard: React.FC<DashboardProps> = ({uuid, name, handleAddClick}
 
             {dashboards?.length > 1 ? 
             (
-                <DeleteDashboardForm 
+                <RemoveModal 
                     opened={opened} 
                     close={close}
                     handleRemoveDashboard={handleRemoveDashboard}
@@ -73,7 +73,7 @@ export const Dashboard: React.FC<DashboardProps> = ({uuid, name, handleAddClick}
             ) 
                 : 
             (
-                <AlertModal 
+                <WarningModal 
                     opened={opened} 
                     close={close}
                 />

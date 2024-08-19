@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Button, Flex, Modal, TextInput } from '@mantine/core';
 import '../../style.sass'
 
-export const DeleteDashboardForm = ({ opened, close, handleRemoveDashboard }) => {
+export const RemoveModal = ({ opened, close, handleRemoveDashboard }) => {
     return (
         <Modal opened={opened} onClose={close} title="Delete your dashboard?" centered>
             <Flex

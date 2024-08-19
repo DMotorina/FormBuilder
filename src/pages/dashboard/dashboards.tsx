@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 import { Tabs, ThemeIcon } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { FormsPage } from '../forms/FormsPage';
-import { NewDashboardForm } from './components/modals/newDashboardForm';
+import { AddModal } from './components/modals/addModal';
 import { addDashboard } from './action';
 import { Dashboard } from './components/dashboard';
 import { IconPlus } from '@tabler/icons-react';
@@ -68,7 +68,7 @@ export const Dashboards = () => {
 
             {showMessage && <FormsPage />}
 
-            <NewDashboardForm 
+            <AddModal 
                 opened={opened} 
                 close={close}
                 text={text}
