@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Button, Modal, TextInput } from '@mantine/core';
 
-import '../../style.sass'
+import '../../style.sass';
 
 interface AddModalProps {
     text: string
@@ -13,14 +13,14 @@ interface AddModalProps {
     onChangeTextDashboard: (event: React.ChangeEvent<HTMLInputElement>) => void
 } 
 
-export const AddModal: React.FC = ({ 
+export const AddModal: React.FC<AddModalProps> = ({ 
     text,
     error, 
     close, 
     opened, 
     handleAddDashboard, 
     onChangeTextDashboard,  
-}: AddModalProps) => {
+}) => {
     return (
         <Modal opened={opened} onClose={close} title="Enter name of your dashboard" centered>
             <TextInput  
