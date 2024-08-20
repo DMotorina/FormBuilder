@@ -3,7 +3,7 @@ import { Tabs } from '@mantine/core';
 
 import './style.sass'
 
-export const Form = ({name, uuid}) => {
+export const Form: React.FC = ({name, uuid}) => {
     return (
         <div className='formPage'>
             <Tabs.Panel value={name} key={uuid} >

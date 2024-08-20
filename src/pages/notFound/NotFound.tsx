@@ -1,11 +1,12 @@
+import './style.sass';
+
 import React from 'react';
 
 import { Container, Title, Text, Button, Group } from '@mantine/core';
+
 import { Illustration } from '../../assets/Illustration';
 
-import './style.sass';
-
-export const NotFound = () => {
+export const NotFound: React.FC = () => {
   return (
     <Container  className="notFound">
       <div className="notFound__inner">
@@ -29,7 +30,7 @@ export const NotFound = () => {
               Take me back to home page
             </Button>
           </Group>
-       </div>
+        </div>
       </div>
     </Container>
   );

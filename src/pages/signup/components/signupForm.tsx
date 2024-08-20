@@ -1,8 +1,10 @@
+import '../style.sass'
+
 import React from 'react';
 
 import { TextInput, PasswordInput, Button, Paper, Title, Checkbox } from '@mantine/core';
 
-export const SignupForm = () => {
+export const SignupForm: React.FC = () => {
     return (
         <Paper className="login__form" radius={0} p={30}>
             <Title order={2} className="login__title" ta="center" mt="md" mb={25}>

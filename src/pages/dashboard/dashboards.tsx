@@ -13,7 +13,7 @@ import { Form } from '../form/Form';
 import { Dashboard } from './components/dashboard';
 import { AddModal } from './components/modals/addModal';
 
-export const Dashboards = () => {
+export const Dashboards: React.FC = () => {
     const dispatch = useAppDispatch();
     
     const dashboards = useAppSelector((state) => state.dashboard.dashboards);
