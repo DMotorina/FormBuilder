@@ -12,10 +12,9 @@ import { DashboardMenu } from './dashboardMenu';
 interface DashboardProps {
     uuid: string
     name: string
-    handleAddClick: () => void
 } 
 
-export const Dashboard: React.FC<DashboardProps> = ({ uuid, name, handleAddClick }) => {
+export const Dashboard: React.FC<DashboardProps> = ({ uuid, name }) => {
     const dispatch = useAppDispatch();
     
     const dashboards = useAppSelector((state) => state.dashboard.dashboards);
@@ -29,7 +28,6 @@ export const Dashboard: React.FC<DashboardProps> = ({ uuid, name, handleAddClick
         <Tabs.Tab 
             value={name}
             key={uuid} 
-            onClick={handleAddClick}
         >
             {name}
 

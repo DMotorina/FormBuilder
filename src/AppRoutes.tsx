@@ -1,16 +1,15 @@
-import * as React from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Login } from './pages/login/Login';
-import { MainPage } from './pages/mainPage/MainPage';
+import { Main } from './pages/main/Main';
 import { NotFound } from './pages/notFound/NotFound';
 import { Signup } from './pages/signup/Signup';
 import { AuthOutlet } from './shared/outlets/auth';
 import { InitOutlet } from './shared/outlets/init';
 import { PrivateOutlet } from './shared/outlets/private';
-import { FormsPage } from './pages/forms/FormsPage';
+import { Form } from './pages/form/Form';
 
 export const AppRoutes = () => {
-  
     return (
       <BrowserRouter>
         <Routes>
@@ -19,10 +18,10 @@ export const AppRoutes = () => {
                 <Route path="/login" element={<Login />} />
               </Route>
               <Route element={<PrivateOutlet />}>
-                <Route path="/" element={<MainPage />} />
+                <Route path="/" element={<Main />} />
               </Route>
             </Route>
-            <Route path="/forms" element={<FormsPage />} />
+            <Route path="/forms" element={<Form />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/signup" element={<Signup />} />
         </Routes>

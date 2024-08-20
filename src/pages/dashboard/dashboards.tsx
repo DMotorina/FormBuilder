@@ -1,34 +1,30 @@
 import './style.sass'
 
-import React, {useState} from 'react';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { Tabs, ThemeIcon } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-import { FormsPage } from '../forms/FormsPage';
-import { AddModal } from './components/modals/addModal';
-import { addDashboard } from './action';
-import { Dashboard } from './components/dashboard';
-import { IconPlus } from '@tabler/icons-react';
+import React, { useState } from 'react';
 
+import { addDashboard } from './action';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+
+import { IconPlus } from '@tabler/icons-react';
+import { useDisclosure } from '@mantine/hooks';
+import { Tabs, ThemeIcon } from '@mantine/core';
+
+import { Form } from '../form/Form';
+import { Dashboard } from './components/dashboard';
+import { AddModal } from './components/modals/addModal';
 
 export const Dashboards = () => {
-    const dispatch = useAppDispatch()
+    const dispatch = useAppDispatch();
     
-    const dashboards = useAppSelector((state) => state.dashboard.dashboards)
-
-    const [showMessage, setShowMessage] = React.useState(false);
-    const [error, setError] = useState('');
+    const dashboards = useAppSelector((state) => state.dashboard.dashboards);
 
     const [opened, { open, close }] = useDisclosure(false);
-    
-    const handleAddClick = () => {
-        setShowMessage(true);
-    };
 
-    const [text, setText] = useState("")
+    const [text, setText] = useState<string>('');
+    const [error, setError] = useState<string>('');
 
     const onChangeTextDashboard = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setText(event.target.value)
+        setText(event.target.value);
         setError('');
     }
 
@@ -38,13 +34,13 @@ export const Dashboards = () => {
             return; 
         }
 
-        dispatch(addDashboard({name: text}))
+        dispatch(addDashboard({name: text}));
         close();
     }
 
 
     return (
-        <div>
+        <>
             <div className='dashboards'>
                 <Tabs defaultValue="Default Dashboard">
                     <Tabs.List justify="center">
@@ -53,7 +49,6 @@ export const Dashboards = () => {
                                 key={uuid} 
                                 uuid={uuid}
                                 name={name}
-                                handleAddClick={handleAddClick}
                             />
                         ))}
                         <ThemeIcon 
@@ -65,10 +60,12 @@ export const Dashboards = () => {
                             <IconPlus style={{ width: '80%', height: '80%' }} />
                         </ThemeIcon>
                     </Tabs.List>
+
+                    {dashboards?.map(({name, uuid}) => (
+                        <Form name={name} key={uuid} uuid={uuid} />
+                    ))}
                 </Tabs>
             </div>
-
-            {showMessage && <FormsPage />}
 
             <AddModal 
                 opened={opened} 
@@ -78,6 +75,6 @@ export const Dashboards = () => {
                 handleAddDashboard={handleAddDashboard}
                 onChangeTextDashboard={onChangeTextDashboard}
             />
-        </div>
+        </>
     )
 }

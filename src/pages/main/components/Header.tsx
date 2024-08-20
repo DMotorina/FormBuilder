@@ -9,7 +9,7 @@ import { IconSearch } from '@tabler/icons-react';
 
 import '../style.sass'
 
-export const HeaderForm = () => {
+export const Header = () => {
     const dispatch = useAppDispatch()
 
     const [opened, { open, close }] = useDisclosure(false);

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { HeaderForm } from './components/headerForm';
+import { Header } from './components/Header';
 import { Dashboards } from '../dashboard/dashboards';
 import { getDashboardsDatas } from '../dashboard/action';
 
-export const MainPage = () => {
+export const Main = () => {
   const loading = useAppSelector((state) => state.dashboard.loadingDashboard)
 
   const dispatch = useAppDispatch()
@@ -19,7 +19,7 @@ export const MainPage = () => {
 
   return (
     <div className='main'>
-      <HeaderForm />
+      <Header />
       <Dashboards />
     </div>
   )
