@@ -9,7 +9,7 @@ import { IconPlus } from '@tabler/icons-react';
 import { useDisclosure } from '@mantine/hooks';
 import { Tabs, ThemeIcon } from '@mantine/core';
 
-import { Form } from '../form/Form';
+import { Forms } from '../form/forms';
 import { Dashboard } from './components/dashboard';
 import { AddModal } from './components/modals/addModal';
 
@@ -62,7 +62,7 @@ export const Dashboards: React.FC = () => {
                     </Tabs.List>
 
                     {dashboards?.map(({name, uuid}) => (
-                        <Form name={name} key={uuid} uuid={uuid} />
+                        <Forms name={name} key={uuid} uuid={uuid} />
                     ))}
                 </Tabs>
             </div>

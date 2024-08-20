@@ -3,10 +3,10 @@ import { addDashboard, getDashboardsDatas, removeDashboard } from './action'
 import { Dashboard } from './types'
 
 interface State {
-    loadingDashboard: boolean
-    error: {} | null
-    dashboards: Dashboard[] | null
-  }
+  loadingDashboard: boolean
+  error: {} | null
+  dashboards: Dashboard[] | null
+}
   
   const initialState: State = {
     loadingDashboard: false,
