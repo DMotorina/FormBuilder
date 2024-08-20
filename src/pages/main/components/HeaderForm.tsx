@@ -9,7 +9,7 @@ import { useDisclosure } from '@mantine/hooks';
 import { IconSearch } from '@tabler/icons-react';
 import { Menu, Burger, Container, Drawer, Input, Avatar } from '@mantine/core';
 
-export const Header: React.FC = () => {
+export const HeaderForm: React.FC = () => {
   const dispatch = useAppDispatch()
 
   const [opened, { open, close }] = useDisclosure(false);

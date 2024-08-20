@@ -17,7 +17,7 @@ const initialState: State = {
   }
   
 const formSlice = createSlice<State, SliceCaseReducers<State>>({
-    name: 'dashboard',
+    name: 'form',
     initialState,
     reducers: {},
     extraReducers: (builder) => {

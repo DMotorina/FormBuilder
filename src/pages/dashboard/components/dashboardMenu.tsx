@@ -6,8 +6,8 @@ import { useDisclosure } from '@mantine/hooks';
 import { Menu, ThemeIcon, Input, rem } from "@mantine/core"
 import { IconTriangleInvertedFilled, IconTrash } from "@tabler/icons-react"
 
-import { RemoveModal } from './modals/removeModal';
-import { WarningModal } from './modals/warningModal';
+import { RemoveModal } from './modals/RemoveModal';
+import { WarningModal } from './modals/WarningModal';
 
 interface DashboardMenuProps {
     name: string

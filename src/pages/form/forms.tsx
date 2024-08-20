@@ -5,9 +5,10 @@ import React, { useEffect } from 'react';
 import { getFormsDatas } from './action';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 
-import { Tabs } from '@mantine/core';
+import { Group, Paper, Tabs, ThemeIcon } from '@mantine/core';
 
-import { Form } from './components/form';
+import { Form } from './components/Form';
+import { IconPlus } from '@tabler/icons-react';
 
 interface FormsProps {
     name: string
@@ -28,9 +29,20 @@ export const Forms: React.FC<FormsProps> = ({ name, uuid }) => {
     }
 
     return (
-        <div className='formPage'>
+        <div className='forms'>
             <Tabs.Panel value={name} key={uuid} >
-                <Form />
+                <Group gap="xl"> 
+                    <Paper component="button" className='forms__add'>
+                        <ThemeIcon 
+                            variant="transparent"
+                            style={{ cursor: 'pointer' }}
+                        >
+                            <IconPlus style={{ width: '80%', height: '80%' }} />
+                        </ThemeIcon>
+                    </Paper>
+
+                    <Form />
+                </Group>
             </Tabs.Panel>
         </div>
     )

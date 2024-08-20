@@ -2,7 +2,7 @@ import './style.sass'
 
 import React from 'react';
 
-import { SignupForm } from './components/signupForm';
+import { SignupForm } from './components/SignupForm';
 
 export const Signup: React.FC = () => {
     return (

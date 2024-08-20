@@ -10,7 +10,7 @@ import { Login } from './pages/login/Login';
 import { Main } from './pages/main/Main';
 import { NotFound } from './pages/notFound/NotFound';
 import { Signup } from './pages/signup/Signup';
-import { Forms } from './pages/form/forms';
+import { Forms } from './pages/form/Forms';
 
 export const AppRoutes = () => {
     return (

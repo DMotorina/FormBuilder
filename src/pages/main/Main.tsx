@@ -2,8 +2,8 @@ import './style.sass'
 
 import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { Header } from './components/Header';
-import { Dashboards } from '../dashboard/dashboards';
+import { HeaderForm } from './components/HeaderForm';
+import { Dashboards } from '../dashboard/Dashboards';
 import { getDashboardsDatas } from '../dashboard/action';
 
 export const Main: React.FC = () => {
@@ -21,7 +21,7 @@ export const Main: React.FC = () => {
   
   return (
     <div className='main'>
-      <Header />
+      <HeaderForm />
       <Dashboards />
     </div>
   )

@@ -9,9 +9,9 @@ import { IconPlus } from '@tabler/icons-react';
 import { useDisclosure } from '@mantine/hooks';
 import { Tabs, ThemeIcon } from '@mantine/core';
 
-import { Forms } from '../form/forms';
-import { Dashboard } from './components/dashboard';
-import { AddModal } from './components/modals/addModal';
+import { Forms } from '../form/Forms';
+import { Dashboard } from './components/Dashboard';
+import { AddModal } from './components/modals/AddModal';
 
 export const Dashboards: React.FC = () => {
     const dispatch = useAppDispatch();
