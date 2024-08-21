@@ -17,11 +17,9 @@ export const login = createAsyncThunk<
 >('user/login', async ({ email, password }, { rejectWithValue }) => {
   try {
     const response = await httpClient.post<User>('/api/v1/auth/login/', { email, password }, config)
-    console.log('--response', response)
     return response.data
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
-    console.log('--error', error)
     return rejectWithValue(error.response.data['non_field_errors'][0])
   }
 })

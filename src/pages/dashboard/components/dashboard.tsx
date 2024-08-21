@@ -1,8 +1,8 @@
 import '../style.sass'
 
-import React from 'react';
+import React, { useState } from 'react';
 
-import { removeDashboard } from '../action';
+import { removeDashboard, updateDashboard } from '../action';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
 
 import { Tabs } from '@mantine/core';
@@ -20,21 +20,42 @@ export const Dashboard: React.FC<DashboardProps> = ({ uuid, name }) => {
     const dashboards = useAppSelector((state) => state.dashboard.dashboards);
     const dashboardsLen: number | undefined = dashboards?.length;
 
+    const [currentdName, setCurrentdName] = useState(name)
+    const [newName, setNewName] = useState('')
+    const [error, setError] = useState<string>('');
+
     const handleRemoveDashboard = () => {
         dispatch(removeDashboard(uuid))
     }
 
+    const handleRenameDashboard = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const newNameValue = event.target.value;
+
+        if (newNameValue.length < 3) {
+            setError('The name must contain at least 3 characters');
+            return; 
+        }
+
+        setNewName(newNameValue);
+
+        dispatch(updateDashboard({ uuid, name: newNameValue }));
+
+        setCurrentdName(newNameValue);
+    }
+
     return (
         <Tabs.Tab 
-            value={name}
+            value={currentdName}
             key={uuid} 
         >
-            {name}
+            {currentdName}
 
             <DashboardMenu 
-                name={name} 
+                error={error}
+                currentdName={currentdName} 
                 dashboardsLen={dashboardsLen}
                 handleRemoveDashboard={handleRemoveDashboard}
+                handleRenameDashboard={handleRenameDashboard}
             />
         </Tabs.Tab>
     )

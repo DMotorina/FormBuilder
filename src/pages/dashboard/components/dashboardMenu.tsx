@@ -1,6 +1,6 @@
 import '../style.sass'
 
-import React from 'react';
+import React, { useState } from 'react';
 
 import { useDisclosure } from '@mantine/hooks';
 import { Menu, ThemeIcon, Input, rem } from "@mantine/core"
@@ -10,15 +10,19 @@ import { RemoveModal } from './modals/RemoveModal';
 import { WarningModal } from './modals/WarningModal';
 
 interface DashboardMenuProps {
-    name: string
+    currentdName: string
+    error: string
     dashboardsLen: number | undefined
     handleRemoveDashboard: () => void
+    handleRenameDashboard: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 export const DashboardMenu: React.FC<DashboardMenuProps> = ({ 
-    name, 
+    currentdName, 
+    error,
     dashboardsLen, 
-    handleRemoveDashboard 
+    handleRemoveDashboard, 
+    handleRenameDashboard
 }) => {
     const [opened, { open, close }] = useDisclosure(false);
 
@@ -51,7 +55,13 @@ export const DashboardMenu: React.FC<DashboardMenuProps> = ({
                 </Menu.Target>
                 
                 <Menu.Dropdown>
-                    <Input placeholder={name} className='dashboard__rename'/>
+                    <Input 
+                        value={currentdName}
+                        error={error}
+                        placeholder='zzz'
+                        className='dashboard__rename' 
+                        onChange={(event) => handleRenameDashboard(event)} 
+                    />
 
                     <Menu.Divider />
 

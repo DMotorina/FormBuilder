@@ -1,16 +1,18 @@
 import { createSlice, SliceCaseReducers } from '@reduxjs/toolkit'
-import { addDashboard, getDashboardsDatas, removeDashboard } from './action'
+import { addDashboard, getDashboardsDatas, removeDashboard, updateDashboard } from './action'
 import { Dashboard } from './types'
 
 interface State {
   loadingDashboard: boolean
   error: {} | null
+  update: boolean,
   dashboards: Dashboard[] | null
 }
   
   const initialState: State = {
     loadingDashboard: false,
     error: null,
+    update: false,
     dashboards: [],
   }
   
@@ -28,6 +30,23 @@ interface State {
       })
       builder.addCase(getDashboardsDatas.rejected, (state) => {
         state.loadingDashboard = false
+      })
+      builder.addCase(updateDashboard.pending, (state) => {
+        state.update = true
+        state.error = null
+      })
+      builder.addCase(updateDashboard.fulfilled, (state, { payload }) => {
+        state.update = false
+
+        state.dashboards = state.dashboards?.map(dashboard =>
+          dashboard.uuid === payload.uuid ? payload : dashboard
+        ) || [ payload ];
+
+        console.log('--state.dashboards', state.dashboards)
+      })
+      builder.addCase(updateDashboard.rejected, (state, { payload }) => {
+        state.update = false
+        state.error = payload ?? null
       })
       builder.addCase(addDashboard.pending, (state) => {
         state.error = null
