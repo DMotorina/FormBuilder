@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from '../../../hooks';
 
 import { Tabs } from '@mantine/core';
 
-import { DashboardMenu } from './dashboardMenu';
+import { DashboardMenu } from './DashboardMenu';
 
 interface DashboardProps {
     uuid: string
