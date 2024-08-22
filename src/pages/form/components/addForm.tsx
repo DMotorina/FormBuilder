@@ -26,7 +26,6 @@ export const AddForm: React.FC<AddFormProps> = ({uuid}) => {
         variant="transparent"
         style={{ cursor: 'pointer' }}
         onClick={handleClick}
-        // onClick={() => window.location.href = `/forms/${uuid}`}
     >
         <IconPlus style={{ width: '80%', height: '80%' }} />
     </ThemeIcon>

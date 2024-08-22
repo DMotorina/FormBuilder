@@ -10,7 +10,7 @@ import { Login } from './pages/login/Login';
 import { Main } from './pages/main/Main';
 import { NotFound } from './pages/notFound/NotFound';
 import { Signup } from './pages/signup/Signup';
-import { CreateForm } from './pages/form/components/createForm';
+import { FormCreator } from './pages/formCreator/FormCreator';
 
 export const AppRoutes = () => {
     return (
@@ -24,7 +24,7 @@ export const AppRoutes = () => {
                 <Route path="/" element={<Main />} />
               </Route>
             </Route>
-            <Route path="/forms/:uuid" element={<CreateForm />} />
+            <Route path="/forms/:uuid" element={<FormCreator />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/signup" element={<Signup />} />
         </Routes>

@@ -35,13 +35,6 @@ export const Forms: React.FC<FormsProps> = ({ name, uuid }) => {
                 <Group gap="xl"> 
                     <Paper component="button" className='forms__add'>
                         <AddForm uuid={uuid} />
-                        {/* <ThemeIcon 
-                            variant="transparent"
-                            style={{ cursor: 'pointer' }}
-                            onClick={() => window.location.href = `/forms/${uuid}`}
-                        >
-                            <IconPlus style={{ width: '80%', height: '80%' }} />
-                        </ThemeIcon> */}
                     </Paper>
 
                     <Form />
