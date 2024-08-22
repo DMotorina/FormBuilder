@@ -18,3 +18,36 @@ export const getFormsDatas = createAsyncThunk(
       }
     }
   )
+
+export const createForm = createAsyncThunk<
+  {
+    uuid: string;
+    name: string;
+    description: string;
+    color: string;
+    is_active: boolean;
+    dashboard_uuid: string;
+  },
+  {
+    name: string;
+    description: string;
+    color: string;
+    is_active: boolean;
+    dashboard_uuid: string;
+    rejectValue: {};
+  }
+>('dashboard/createForm', 
+  async ({ name, description, color, is_active, dashboard_uuid }, { rejectWithValue }) => {
+    try {
+      const response = await httpClient.post(
+        '/api/v1/forms/', 
+        { name, description, color, is_active, dashboard_uuid },
+        config
+      )
+      console.log('--response', response)
+      return response.data
+    } catch (error) {
+      return rejectWithValue({})
+    }
+  }
+)
