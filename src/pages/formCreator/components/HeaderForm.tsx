@@ -25,7 +25,7 @@ export const HeaderForm: React.FC = () => {
               <IconFileText />
             </ThemeIcon>
 
-            <Input variant="unstyled" placeholder='New form' />
+            <Input size="md" variant="unstyled" placeholder='New form' />
           </Group>
 
           <Group gap="xl">

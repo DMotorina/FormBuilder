@@ -6,7 +6,7 @@ import { HeaderForm } from './components/HeaderForm';
 import { Dashboards } from '../dashboard/Dashboards';
 import { getDashboardsDatas } from '../dashboard/action';
 
-export const Main: React.FC = () => {
+export const MainPage: React.FC = () => {
   const dispatch = useAppDispatch()
 
   const loading = useAppSelector((state) => state.dashboard.loadingDashboard)
