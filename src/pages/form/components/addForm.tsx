@@ -14,13 +14,10 @@ interface AddFormProps {
 export const AddForm: React.FC<AddFormProps> = ({uuid}) => {
     const navigate = useNavigate();
 
-
     const handleClick = () => {
         navigate(`/forms/${uuid}`);
-
     };
 
-    console.log('--uuid', uuid)
   return (
     <ThemeIcon 
         variant="transparent"
@@ -29,7 +26,5 @@ export const AddForm: React.FC<AddFormProps> = ({uuid}) => {
     >
         <IconPlus style={{ width: '80%', height: '80%' }} />
     </ThemeIcon>
-
-    
   )
 }

@@ -8,11 +8,13 @@ import { logout } from '../../login/action';
 import { IconFileText } from '@tabler/icons-react';
 
 
-export const HeaderForm: React.FC = () => {
+export const HeaderForm: React.FC = ({onSubmit}) => {
   const dispatch = useAppDispatch()
 
   const firstName = useAppSelector((state) => state.user.data?.first_name);
    const lastName = useAppSelector((state) => state.user.data?.last_name);
+
+
 
   return (
     <header className="header">
@@ -29,7 +31,7 @@ export const HeaderForm: React.FC = () => {
           </Group>
 
           <Group gap="xl">
-            <Button variant="filled" color="violet">Send</Button>
+            <Button variant="filled" color="violet" onSubmit={onSubmit}>Send</Button>
 
             <Menu shadow="md" width={200}>
               <Menu.Target>
