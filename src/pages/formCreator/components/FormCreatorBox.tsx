@@ -24,7 +24,7 @@ export const FormCreatorBox: React.FC = ({ onSubmit }) => {
   }
 
   return (
-    <div className='formCreatorBox' onMouseLeave={handleMouseEvent}>
+    <div className='formCreatorBox' onMouseLeave={handleMouseEvent} >
       <Stack
         h={300}
         align="center"
