@@ -4,12 +4,22 @@ import React from 'react';
 
 import { Paper, Input } from '@mantine/core';
 
-export const CreatorMainInfo: React.FC = ({ 
-  handleCreateName, 
-  handleCreateDescription,
+interface CreatorMainInfoProps {
+  error: string
+  errorName: string
+  name: string
+  description: string
+  handleCreateName: (event: React.ChangeEvent<HTMLInputElement>) => void
+  handleCreateDescription: (event: React.ChangeEvent<HTMLInputElement>) => void
+}
+
+export const CreatorMainInfo: React.FC<CreatorMainInfoProps> = ({ 
+  errorName,
+  error,
   name, 
   description,
-  error
+  handleCreateName, 
+  handleCreateDescription,
 }) => {
   return (
     <Paper shadow="xs" radius="md" p="xl" style={{width: '40%'}}>
@@ -20,7 +30,7 @@ export const CreatorMainInfo: React.FC = ({
         placeholder="New Form" 
         onChange={handleCreateName}
         value={name}
-        error={error}
+        error={errorName}
       />
 
       <Input 

@@ -1,41 +1,42 @@
 import '../style.sass'
 
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Text, Paper, Stack, Group, Checkbox } from '@mantine/core';
 
 import { CreatorMainInfo } from './CreatorMainInfo';
 
-export const FormCreatorBox: React.FC = ({ onSubmit }) => {
-  const [name, setName] = useState<string>('')
-  const [description, setDescription] = useState<string>('')
-  const [error, setError] = useState<string>('');
+interface FormCreatorBoxProps {
+  errorName: string
+  error: string
+  name: string
+  description: string
+  handleCreateName: (event: React.ChangeEvent<HTMLInputElement>) => void
+  handleCreateDescription: (event: React.ChangeEvent<HTMLInputElement>) => void
+}
 
-  const handleCreateName = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setName(event.target.value);
-  }
-
-  const handleCreateDescription = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setDescription(event.target.value);
-  }
-
-  const handleMouseEvent = () => {
-    onSubmit({  name: name, description: description })
-  }
-
+export const FormCreatorBox: React.FC<FormCreatorBoxProps> = ({ 
+  errorName,
+  error,
+  name, 
+  description, 
+  handleCreateName, 
+  handleCreateDescription, 
+}) => {
   return (
-    <div className='formCreatorBox' onMouseLeave={handleMouseEvent} >
+    <div className='formCreatorBox'>
       <Stack
         h={300}
         align="center"
         justify="center"
       >
         <CreatorMainInfo 
-          handleCreateName={handleCreateName} 
-          handleCreateDescription={handleCreateDescription}
+          error={error}
+          errorName={errorName} 
           name={name}
           description={description}
-          error={error} 
+          handleCreateName={handleCreateName} 
+          handleCreateDescription={handleCreateDescription}
         />
 
         <Paper shadow="xs" radius="md" p="xl" style={{width: '40%'}}>

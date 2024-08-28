@@ -6,11 +6,15 @@ import { IconPalette } from '@tabler/icons-react';
 import { Affix, Group, HoverCard, ThemeIcon, Text } from '@mantine/core';
 import { ColorPickerForm } from './ColorPickerForm';
 
-export const ColorPicker: React.FC = ({ onSubmit, defaultColor, handlerColorChange }) => {
+interface ColorPickerProps {
+    color: string
+    handlerColorChange: (newColor: string) => void
+}
+
+export const ColorPicker: React.FC<ColorPickerProps> = ({ color, handlerColorChange }) => {
     const formRef = useRef<HTMLDivElement>(null);
 
     const [openColorPicker, setOpenColorPicker] = useState<boolean>(false);
-    const [value, onChange] = useState(defaultColor);
 
     const handleOpenColorPicker = () => {
         setOpenColorPicker(true);
@@ -29,12 +33,6 @@ export const ColorPicker: React.FC = ({ onSubmit, defaultColor, handlerColorChan
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
-
-    const handleColorChange = (newColor: string) => {
-        onChange(newColor);
-        onSubmit({color: newColor});
-        handlerColorChange(newColor)
-    };
 
     return (  
         <div className='colorPicker'>
@@ -70,7 +68,7 @@ export const ColorPicker: React.FC = ({ onSubmit, defaultColor, handlerColorChan
                     :
                     (
                         <div ref={formRef}>
-                            <ColorPickerForm value={value} onChange={handleColorChange} />
+                            <ColorPickerForm color={color} handlerColorChange={handlerColorChange} />
                         </div>
                     )
                 }

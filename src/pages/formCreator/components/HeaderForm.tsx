@@ -7,14 +7,23 @@ import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { logout } from '../../login/action';
 import { IconFileText } from '@tabler/icons-react';
 
+interface HeaderFormProps {
+  name: string
+  onSubmit: () => {
+    name: string;
+    description: string;
+    color: string;
+    is_active: boolean;
+    dashboard_uuid: string;
+  } | undefined
+  handleCreateName: (event: React.ChangeEvent<HTMLInputElement>) => void
+}
 
-export const HeaderForm: React.FC = ({onSubmit}) => {
+export const HeaderForm: React.FC<HeaderFormProps> = ({ name, onSubmit, handleCreateName }) => {
   const dispatch = useAppDispatch()
 
   const firstName = useAppSelector((state) => state.user.data?.first_name);
-   const lastName = useAppSelector((state) => state.user.data?.last_name);
-
-
+  const lastName = useAppSelector((state) => state.user.data?.last_name);
 
   return (
     <header className="header">
@@ -27,11 +36,17 @@ export const HeaderForm: React.FC = ({onSubmit}) => {
               <IconFileText />
             </ThemeIcon>
 
-            <Input size="md" variant="unstyled" placeholder='New form' />
+            <Input 
+              size="md" 
+              variant="unstyled" 
+              placeholder='New form' 
+              value={name}
+              onChange={handleCreateName}
+            />
           </Group>
 
           <Group gap="xl">
-            <Button variant="filled" color="violet" onSubmit={onSubmit}>Send</Button>
+            <Button variant="filled" color="violet" onClick={onSubmit}>Send</Button>
 
             <Menu shadow="md" width={200}>
               <Menu.Target>

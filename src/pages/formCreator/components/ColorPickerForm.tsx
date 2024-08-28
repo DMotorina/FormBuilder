@@ -1,13 +1,18 @@
 import '../style.sass'
 
-import React, { useState } from 'react';
+import React from 'react';
 
-import { ColorPicker, Text } from '@mantine/core';
+import { ColorPicker } from '@mantine/core';
 
-export const ColorPickerForm: React.FC = ({ value, onChange }) => {
+interface ColorPickerFormProps {
+    color: string
+    handlerColorChange: (newColor: string) => void
+}
+
+export const ColorPickerForm: React.FC<ColorPickerFormProps> = ({ color, handlerColorChange }) => {
     return (
         <>
-            <ColorPicker value={value} onChange={onChange} />
+            <ColorPicker value={color} onChange={handlerColorChange} />
         </>
     )
 }

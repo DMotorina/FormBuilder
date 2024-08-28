@@ -2,13 +2,12 @@ import './style.sass'
 
 import React, { useEffect } from 'react';
 
-import { createForm, getFormsDatas } from './action';
+import { getFormsDatas } from './action';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 
-import { Group, Paper, Tabs, ThemeIcon } from '@mantine/core';
+import { Group, Paper, Tabs } from '@mantine/core';
 
 import { Form } from './components/Form';
-import { IconPlus } from '@tabler/icons-react';
 import { AddForm } from './components/addForm';
 
 interface FormsProps {
