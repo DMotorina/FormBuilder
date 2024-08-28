@@ -9,6 +9,7 @@ import { IconFileText } from '@tabler/icons-react';
 
 interface HeaderFormProps {
   name: string
+  getIconColor: () => string
   onSubmit: () => {
     name: string;
     description: string;
@@ -19,7 +20,12 @@ interface HeaderFormProps {
   handleCreateName: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export const HeaderForm: React.FC<HeaderFormProps> = ({ name, onSubmit, handleCreateName }) => {
+export const HeaderForm: React.FC<HeaderFormProps> = ({ 
+  name, 
+  getIconColor,
+  onSubmit, 
+  handleCreateName 
+}) => {
   const dispatch = useAppDispatch()
 
   const firstName = useAppSelector((state) => state.user.data?.first_name);
@@ -29,7 +35,7 @@ export const HeaderForm: React.FC<HeaderFormProps> = ({ name, onSubmit, handleCr
     <header className="header">
           <Group>
             <ThemeIcon 
-              color="violet"
+              color={getIconColor()}
               variant="transparent"
               style={{ cursor: 'pointer' }}
             >
@@ -46,7 +52,13 @@ export const HeaderForm: React.FC<HeaderFormProps> = ({ name, onSubmit, handleCr
           </Group>
 
           <Group gap="xl">
-            <Button variant="filled" color="violet" onClick={onSubmit}>Send</Button>
+            <Button 
+              variant="filled" 
+              color={getIconColor()} 
+              onClick={onSubmit}
+            >
+              Send
+            </Button>
 
             <Menu shadow="md" width={200}>
               <Menu.Target>

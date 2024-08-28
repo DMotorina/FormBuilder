@@ -37,13 +37,16 @@ export const FormCreator: React.FC = () => {
     onChange(newColor);
   };
 
+  const getIconColor = () => {
+    return localStorage.getItem(`backgroundColor-${dashboardUuid}`) || 'violet'
+  }
+
   const onSubmit = () => {
     if (name.length < 3) {
       setErrorName('The name of form must contain at least 3 characters');
       return; 
     }
 
-    console.log('--aaz', { name, description, color, is_active: false, dashboard_uuid: dashboardUuid })
     return { name, description, color, is_active: false, dashboard_uuid: dashboardUuid }
   }
 
@@ -51,6 +54,7 @@ export const FormCreator: React.FC = () => {
     <div className='formCreator' style={{backgroundColor: defaultColor}}>
       <HeaderForm 
         name={name} 
+        getIconColor={getIconColor}
         onSubmit={onSubmit} 
         handleCreateName={handleCreateName} 
       />
@@ -66,6 +70,7 @@ export const FormCreator: React.FC = () => {
 
       <ColorPicker 
         color={defaultColor}
+        getIconColor={getIconColor}
         handlerColorChange={handlerColorChange}
       />
     </div>
