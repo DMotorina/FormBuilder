@@ -62,7 +62,7 @@ export const HeaderForm: React.FC<HeaderFormProps> = ({
 
             <Menu shadow="md" width={200}>
               <Menu.Target>
-                <Avatar name={`${firstName} ${lastName}`} color="initials" />
+                <Avatar name={`${firstName} ${lastName}`} color="initials" style={{ cursor: 'pointer' }} />
               </Menu.Target>
 
               <Menu.Dropdown>

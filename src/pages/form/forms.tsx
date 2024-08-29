@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 import { getFormsDatas } from './action';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 
-import { Group, Paper, Tabs } from '@mantine/core';
+import { Group, Tabs } from '@mantine/core';
 
 import { Form } from './components/Form';
 import { AddForm } from './components/addForm';
@@ -32,7 +32,7 @@ export const Forms: React.FC<FormsProps> = ({ name, key, dashboardUuid }) => {
 
     return (
         <div className='forms'>
-            <Tabs.Panel value={name} key={key} >
+            <Tabs.Panel value={name} key={key} p={30}>
                 <Group gap="xl"> 
                     <AddForm dashboardUuid={dashboardUuid} />
 
