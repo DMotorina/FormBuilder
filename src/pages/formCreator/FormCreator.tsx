@@ -1,25 +1,27 @@
 import './style.sass'
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { HeaderForm } from './components/HeaderForm';
 import { FormCreatorBox } from './components/FormCreatorBox';
 import { ColorPicker } from './components/ColorPicker';
+import { createForm } from '../form/action';
+import { useAppDispatch } from '../../hooks';
 
 export const FormCreator: React.FC = () => {  
+  const dispatch = useAppDispatch();
+
   const currentUrl = window.location.pathname;
   let dashboardUuid = currentUrl.slice(7, currentUrl.length)
 
-  const [defaultColor, setDefaultColor] = useState(() => {
-    let newColor = localStorage.getItem(`backgroundColor-${dashboardUuid}`)
-    return newColor || '#f0ebf8';
-  });
+  const [defaultColor, setDefaultColor] = useState('#f0ebf8');
 
   const [name, setName] = useState<string>('')
   const [description, setDescription] = useState<string>('')
   const [error, setError] = useState<string>('');
   const [errorName, setErrorName] = useState<string>('');
   const [color, onChange] = useState<string>(defaultColor);
+  const [defaultIconColor, setDefaultIconColor] = useState<string>('violet');
 
   const handleCreateName = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newName = event.target.value;
@@ -33,13 +35,9 @@ export const FormCreator: React.FC = () => {
 
   const handlerColorChange = (newColor: string) => {
     setDefaultColor(newColor);
-    localStorage.setItem(`backgroundColor-${dashboardUuid}`, newColor); 
+    setDefaultIconColor(newColor);
     onChange(newColor);
   };
-
-  const getIconColor = () => {
-    return localStorage.getItem(`backgroundColor-${dashboardUuid}`) || 'violet'
-  }
 
   const onSubmit = () => {
     if (name.length < 3) {
@@ -47,14 +45,14 @@ export const FormCreator: React.FC = () => {
       return; 
     }
 
-    return { name, description, color, is_active: false, dashboard_uuid: dashboardUuid }
+    dispatch(createForm({ name, description, color, is_active: false, dashboard_uuid: dashboardUuid }));
   }
 
   return (
     <div className='formCreator' style={{backgroundColor: defaultColor}}>
       <HeaderForm 
         name={name} 
-        getIconColor={getIconColor}
+        defaultIconColor={defaultIconColor}
         onSubmit={onSubmit} 
         handleCreateName={handleCreateName} 
       />
@@ -70,7 +68,7 @@ export const FormCreator: React.FC = () => {
 
       <ColorPicker 
         color={defaultColor}
-        getIconColor={getIconColor}
+        defaultIconColor={defaultIconColor}
         handlerColorChange={handlerColorChange}
       />
     </div>

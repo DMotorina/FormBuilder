@@ -1,6 +1,6 @@
 import { createSlice, SliceCaseReducers } from '@reduxjs/toolkit'
 
-import { getFormsDatas } from './action'
+import { createForm, getFormsDatas } from './action'
 
 import { Form } from "./types"
 
@@ -30,6 +30,17 @@ const formSlice = createSlice<State, SliceCaseReducers<State>>({
       })
       builder.addCase(getFormsDatas.rejected, (state) => {
         state.loadingForm = false
+      })
+      builder.addCase(createForm.fulfilled, (state, { payload }) => {
+        const { dashboard_uuid } = payload;
+          
+        state.forms = [...state.forms, payload]
+      })
+      builder.addCase(createForm.rejected, (state, { payload }) => {
+        state.error = payload
+      })
+      builder.addCase(createForm.pending, (state) => {
+        state.error = null
       })
     },
 })

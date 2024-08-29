@@ -7,6 +7,7 @@ interface State {
   error: {} | null
   update: boolean,
   dashboards: Dashboard[] | null
+  forms: Form
 }
   
   const initialState: State = {
@@ -41,8 +42,6 @@ interface State {
         state.dashboards = state.dashboards?.map(dashboard =>
           dashboard.uuid === payload.uuid ? payload : dashboard
         ) || [ payload ];
-
-        console.log('--state.dashboards', state.dashboards)
       })
       builder.addCase(updateDashboard.rejected, (state, { payload }) => {
         state.update = false
@@ -52,7 +51,7 @@ interface State {
         state.error = null
       })
       builder.addCase(addDashboard.fulfilled, (state, { payload }) => {
-        state.dashboards = [...state.dashboards, payload]
+        state.dashboards = [...state.dashboards, {...payload, forms: []}]
       })
       builder.addCase(addDashboard.rejected, (state, { payload }) => {
         state.error = payload

@@ -9,7 +9,7 @@ import { IconFileText } from '@tabler/icons-react';
 
 interface HeaderFormProps {
   name: string
-  getIconColor: () => string
+  defaultIconColor: string
   onSubmit: () => {
     name: string;
     description: string;
@@ -22,7 +22,7 @@ interface HeaderFormProps {
 
 export const HeaderForm: React.FC<HeaderFormProps> = ({ 
   name, 
-  getIconColor,
+  defaultIconColor,
   onSubmit, 
   handleCreateName 
 }) => {
@@ -35,7 +35,7 @@ export const HeaderForm: React.FC<HeaderFormProps> = ({
     <header className="header">
           <Group>
             <ThemeIcon 
-              color={getIconColor()}
+              color={defaultIconColor}
               variant="transparent"
               style={{ cursor: 'pointer' }}
             >
@@ -54,7 +54,7 @@ export const HeaderForm: React.FC<HeaderFormProps> = ({
           <Group gap="xl">
             <Button 
               variant="filled" 
-              color={getIconColor()} 
+              color={defaultIconColor} 
               onClick={onSubmit}
             >
               Send

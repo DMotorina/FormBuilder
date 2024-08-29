@@ -8,13 +8,13 @@ import { ColorPickerForm } from './ColorPickerForm';
 
 interface ColorPickerProps {
     color: string
-    getIconColor: () => string
+    defaultIconColor: string
     handlerColorChange: (newColor: string) => void
 }
 
 export const ColorPicker: React.FC<ColorPickerProps> = ({ 
     color, 
-    getIconColor, 
+    defaultIconColor, 
     handlerColorChange 
 }) => {
     const formRef = useRef<HTMLDivElement>(null);
@@ -48,8 +48,8 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
                             <HoverCard width={280} shadow="md">
                                 <HoverCard.Target>
                                     <ThemeIcon 
-                                        color={getIconColor()}
-                                        variant={getIconColor() === 'violet' ? 'transparent' : undefined}
+                                        color={defaultIconColor}
+                                        variant={defaultIconColor === 'violet' ? 'transparent' : undefined}
                                         style={{ cursor: 'pointer' }}
                                         onClick={handleOpenColorPicker}
                                     >

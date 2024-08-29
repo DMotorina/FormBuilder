@@ -17,6 +17,8 @@ export const Dashboards: React.FC = () => {
     const dispatch = useAppDispatch();
     
     const dashboards = useAppSelector((state) => state.dashboard.dashboards);
+    // console.log('--dashboards', dashboards)
+    const forms = useAppSelector((state) => state.form.forms)
 
     const [opened, { open, close }] = useDisclosure(false);
 

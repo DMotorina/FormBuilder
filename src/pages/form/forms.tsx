@@ -19,6 +19,7 @@ export const Forms: React.FC<FormsProps> = ({ name, uuid }) => {
     const dispatch = useAppDispatch()
 
     const loading = useAppSelector((state) => state.form.loadingForm)
+    const forms = useAppSelector((state) => state.form.forms?.filter(f => f.dashboard_uuid === uuid))
 
     useEffect(() => {
         dispatch(getFormsDatas())
@@ -36,7 +37,11 @@ export const Forms: React.FC<FormsProps> = ({ name, uuid }) => {
                         <AddForm uuid={uuid} />
                     </Paper>
 
-                    <Form />
+                    {forms?.map(({name, color}) => {
+                        return (
+                            <Form name={name} color={color} />
+                        )
+                    })}
                 </Group>
             </Tabs.Panel>
         </div>

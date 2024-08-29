@@ -34,8 +34,8 @@ export const createForm = createAsyncThunk<
     color: string;
     is_active: boolean;
     dashboard_uuid: string;
-    rejectValue: {};
-  }
+  },
+  { rejectValue: {} }
 >('form/createForm', 
   async ({ name, description, color, is_active, dashboard_uuid }, { rejectWithValue }) => {
     try {
@@ -44,6 +44,8 @@ export const createForm = createAsyncThunk<
         { name, description, color, is_active, dashboard_uuid },
         config
       )
+
+      console.log('--response', response)
       return response.data
     } catch (error) {
       return rejectWithValue({})
