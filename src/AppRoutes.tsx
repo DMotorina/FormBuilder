@@ -24,7 +24,7 @@ export const AppRoutes = () => {
                 <Route path="/" element={<MainPage />} />
               </Route>
             </Route>
-            <Route path="/forms/:uuid" element={<FormCreator />} />
+            <Route path="/forms/:dashboardUuid" element={<FormCreator />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/signup" element={<Signup />} />
         </Routes>

@@ -64,7 +64,7 @@ export const Dashboards: React.FC = () => {
                     </Tabs.List>
 
                     {dashboards?.map(({name, uuid}) => (
-                        <Forms name={name} key={uuid} uuid={uuid} />
+                        <Forms name={name} key={uuid} dashboardUuid={uuid} />
                     ))}
                 </Tabs>
             </div>

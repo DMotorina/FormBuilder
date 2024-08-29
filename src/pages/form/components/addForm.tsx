@@ -2,29 +2,31 @@ import '../style.sass'
 
 import React from 'react';
 
-import { ThemeIcon } from '@mantine/core';
-import { IconPlus } from '@tabler/icons-react';
+import { ThemeIcon, Text, Paper } from '@mantine/core';
 
 import { useNavigate } from 'react-router-dom';
+import { Plus } from '../../../assets/plus';
 
 interface AddFormProps {
-    uuid: string;
+    dashboardUuid: string;
 }
 
-export const AddForm: React.FC<AddFormProps> = ({uuid}) => {
+export const AddForm: React.FC<AddFormProps> = ({dashboardUuid}) => {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate(`/forms/${uuid}`);
+        navigate(`/forms/${dashboardUuid}`);
     };
 
   return (
-    <ThemeIcon 
-        variant="transparent"
-        style={{ cursor: 'pointer' }}
-        onClick={handleClick}
-    >
-        <IconPlus style={{ width: '80%', height: '80%' }} />
-    </ThemeIcon>
+    <div className='formAdd' onClick={handleClick}>
+        <Paper 
+            shadow="xs" 
+            className='formAdd__box'
+        >
+            <Plus />
+        </Paper>
+        <Text fw={500} pt={10} style={{textAlign: 'center'}}>Create a form</Text>
+    </div>
   )
 }

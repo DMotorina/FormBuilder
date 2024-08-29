@@ -12,14 +12,15 @@ import { AddForm } from './components/addForm';
 
 interface FormsProps {
     name: string
-    uuid: string
+    key: string
+    dashboardUuid: string
 } 
 
-export const Forms: React.FC<FormsProps> = ({ name, uuid }) => {
+export const Forms: React.FC<FormsProps> = ({ name, key, dashboardUuid }) => {
     const dispatch = useAppDispatch()
 
     const loading = useAppSelector((state) => state.form.loadingForm)
-    const forms = useAppSelector((state) => state.form.forms?.filter(f => f.dashboard_uuid === uuid))
+    const forms = useAppSelector((state) => state.form.forms?.filter(f => f.dashboard_uuid === dashboardUuid))
 
     useEffect(() => {
         dispatch(getFormsDatas())
@@ -31,17 +32,13 @@ export const Forms: React.FC<FormsProps> = ({ name, uuid }) => {
 
     return (
         <div className='forms'>
-            <Tabs.Panel value={name} key={uuid} >
+            <Tabs.Panel value={name} key={key} >
                 <Group gap="xl"> 
-                    <Paper component="button" className='forms__add'>
-                        <AddForm uuid={uuid} />
-                    </Paper>
+                    <AddForm dashboardUuid={dashboardUuid} />
 
-                    {forms?.map(({name, color}) => {
-                        return (
-                            <Form name={name} color={color} />
-                        )
-                    })}
+                    {forms?.map(({name, color}) => (
+                        <Form name={name} color={color} />
+                    ))}
                 </Group>
             </Tabs.Panel>
         </div>
