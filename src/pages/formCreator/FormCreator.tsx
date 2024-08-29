@@ -2,6 +2,8 @@ import './style.sass'
 
 import React, { useState } from 'react';
 
+import { useNavigate } from 'react-router-dom';
+
 import { HeaderForm } from './components/HeaderForm';
 import { FormCreatorBox } from './components/FormCreatorBox';
 import { ColorPicker } from './components/ColorPicker';
@@ -10,6 +12,7 @@ import { useAppDispatch } from '../../hooks';
 
 export const FormCreator: React.FC = () => {  
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const currentUrl = window.location.pathname;
   let dashboardUuid = currentUrl.slice(7, currentUrl.length)
@@ -46,6 +49,7 @@ export const FormCreator: React.FC = () => {
     }
 
     dispatch(createForm({ name, description, color, is_active: false, dashboard_uuid: dashboardUuid }));
+    navigate('/');
   }
 
   return (
