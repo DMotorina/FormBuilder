@@ -2,7 +2,7 @@ import '../style.sass'
 
 import React from 'react';
 
-import { ThemeIcon, Text, Paper } from '@mantine/core';
+import { Text, Paper } from '@mantine/core';
 
 import { useNavigate } from 'react-router-dom';
 import { Plus } from '../../../assets/plus';
