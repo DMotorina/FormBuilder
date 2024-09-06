@@ -10,7 +10,7 @@ import { Login } from './pages/login/Login';
 import { MainPage } from './pages/mainPage/MainPage';
 import { NotFound } from './pages/notFound/NotFound';
 import { Signup } from './pages/signup/Signup';
-import { FormCreator } from './pages/formCreator/FormCreator';
+import { FormWrapper } from './pages/formWrapper/FormWrapper';
 
 export const AppRoutes = () => {
     return (
@@ -24,7 +24,8 @@ export const AppRoutes = () => {
                 <Route path="/" element={<MainPage />} />
               </Route>
             </Route>
-            <Route path="/forms/:dashboardUuid" element={<FormCreator />} />
+            <Route path="/forms/:dashboardUuid?" element={<FormWrapper  />} />
+            <Route path="/forms/:formUuid/edit" element={<FormWrapper />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/signup" element={<Signup />} />
         </Routes>

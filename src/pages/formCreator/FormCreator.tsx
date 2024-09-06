@@ -8,14 +8,11 @@ import { HeaderForm } from './components/HeaderForm';
 import { FormCreatorBox } from './components/FormCreatorBox';
 import { ColorPicker } from './components/ColorPicker';
 import { createForm } from '../form/action';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 
-export const FormCreator: React.FC = () => {  
+export const FormCreator: React.FC<{ dashboardUuid?: string }> = ({ dashboardUuid }) => {  
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-
-  const currentUrl = window.location.pathname;
-  let dashboardUuid = currentUrl.slice(7, currentUrl.length)
 
   const [defaultColor, setDefaultColor] = useState('#f0ebf8');
 

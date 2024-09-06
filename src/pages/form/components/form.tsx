@@ -1,6 +1,7 @@
 import '../style.sass'
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { Text, Paper, ThemeIcon, Flex } from '@mantine/core';
 import { IconDotsVertical } from '@tabler/icons-react';
@@ -8,11 +9,19 @@ import { IconDotsVertical } from '@tabler/icons-react';
 interface FormProps {
   name: string;
   color: string;
+  uuid: string;
+  dashboard_uuid: string;
 }
 
-export const Form: React.FC<FormProps> = ({ name, color }) => {
+export const Form: React.FC<FormProps> = ({ name, uuid, dashboard_uuid, color }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/forms/${uuid}/edit`);
+  };
+
   return (
-    <div className='form'>
+    <div className='form' onClick={handleClick}>
       <Paper shadow="xs" className='form__box' style={{backgroundColor: color}}></Paper>
       <Flex
         mih={50}

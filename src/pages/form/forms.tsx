@@ -36,8 +36,13 @@ export const Forms: React.FC<FormsProps> = ({ name, key, dashboardUuid }) => {
                 <Group gap="xl"> 
                     <AddForm dashboardUuid={dashboardUuid} />
 
-                    {forms?.map(({name, color}) => (
-                        <Form name={name} color={color} />
+                    {forms?.map(({name, uuid, dashboard_uuid, color}) => (
+                        <Form 
+                            name={name} 
+                            uuid={uuid}
+                            dashboard_uuid={dashboard_uuid} 
+                            color={color} 
+                        />
                     ))}
                 </Group>
             </Tabs.Panel>

@@ -31,9 +31,7 @@ const formSlice = createSlice<State, SliceCaseReducers<State>>({
       builder.addCase(getFormsDatas.rejected, (state) => {
         state.loadingForm = false
       })
-      builder.addCase(createForm.fulfilled, (state, { payload }) => {
-        const { dashboard_uuid } = payload;
-          
+      builder.addCase(createForm.fulfilled, (state, { payload }) => {          
         state.forms = [...state.forms, payload]
       })
       builder.addCase(createForm.rejected, (state, { payload }) => {
