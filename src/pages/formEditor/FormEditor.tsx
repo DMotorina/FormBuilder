@@ -3,9 +3,9 @@ import './style.sass'
 import React, { useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { updateForm } from '../form/action';
-import { HeaderForm } from '../formCreator/components/HeaderForm';
+import { FormHeader } from '../formCreator/components/FormHeader';
 import { FormCreatorBox } from '../formCreator/components/FormCreatorBox';
 import { ColorPicker } from '../formCreator/components/ColorPicker';
 import { Form } from '../form/types';
@@ -60,7 +60,7 @@ export const FormEditor: React.FC<{ values?: Form }> = ({ values }) => {
 
     return (
         <div className='formCreator' style={{backgroundColor: defaultColor}} key={uuid}>
-        <HeaderForm 
+        <FormHeader 
             name={newName} 
             defaultIconColor={defaultIconColor}
             onSubmit={onUpdate} 

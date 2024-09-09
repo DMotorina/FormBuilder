@@ -21,7 +21,7 @@ export const Form: React.FC<FormProps> = ({ name, uuid, dashboard_uuid, color })
   };
 
   return (
-    <div className='form' onClick={handleClick}>
+    <div className='form' onClick={handleClick} key={uuid}>
       <Paper shadow="xs" className='form__box' style={{backgroundColor: color}}></Paper>
       <Flex
         mih={50}

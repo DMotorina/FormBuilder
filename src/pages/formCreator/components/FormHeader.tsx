@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { logout } from '../../login/action';
 import { IconFileText } from '@tabler/icons-react';
 
-interface HeaderFormProps {
+interface FormHeaderProps {
   name: string
   defaultIconColor: string
   onSubmit: () => {
@@ -17,19 +17,21 @@ interface HeaderFormProps {
     is_active: boolean;
     dashboard_uuid: string;
   } | undefined
-  handleCreateName: (event: React.ChangeEvent<HTMLInputElement>) => void
+  handleCreateName: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const HeaderForm: React.FC<HeaderFormProps> = ({ 
+export const FormHeader: React.FC<FormHeaderProps> = ({ 
   name, 
   defaultIconColor,
   onSubmit, 
-  handleCreateName 
+  handleCreateName,
 }) => {
   const dispatch = useAppDispatch()
 
   const firstName = useAppSelector((state) => state.user.data?.first_name);
   const lastName = useAppSelector((state) => state.user.data?.last_name);
+  const fullName = firstName && lastName ? `${firstName} ${lastName}` : 'User'; 
+  console.log('--fullName', fullName)
 
   return (
     <header className="header">
@@ -62,7 +64,7 @@ export const HeaderForm: React.FC<HeaderFormProps> = ({
 
             <Menu shadow="md" width={200}>
               <Menu.Target>
-                <Avatar name={`${firstName} ${lastName}`} color="initials" style={{ cursor: 'pointer' }} />
+                <Avatar name={fullName} color="initials" />
               </Menu.Target>
 
               <Menu.Dropdown>

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
-import { HeaderForm } from './components/HeaderForm';
+import { FormHeader } from './components/FormHeader';
 import { FormCreatorBox } from './components/FormCreatorBox';
 import { ColorPicker } from './components/ColorPicker';
 import { createForm } from '../form/action';
@@ -51,7 +51,7 @@ export const FormCreator: React.FC<{ dashboardUuid?: string }> = ({ dashboardUui
 
   return (
     <div className='formCreator' style={{backgroundColor: defaultColor}}>
-      <HeaderForm 
+      <FormHeader 
         name={name} 
         defaultIconColor={defaultIconColor}
         onSubmit={onSubmit} 

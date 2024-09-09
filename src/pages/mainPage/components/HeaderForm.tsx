@@ -15,7 +15,10 @@ export const HeaderForm: React.FC = () => {
   const [opened, { open, close }] = useDisclosure(false);
 
   const firstName = useAppSelector((state) => state.user.data?.first_name);
-   const lastName = useAppSelector((state) => state.user.data?.last_name);
+  const lastName = useAppSelector((state) => state.user.data?.last_name);
+
+  const fullName = firstName && lastName ? `${firstName} ${lastName}` : 'User'; 
+  
 
   return (
     <header className="header">
@@ -31,7 +34,7 @@ export const HeaderForm: React.FC = () => {
 
             <Menu shadow="md" width={200}>
               <Menu.Target>
-                <Avatar name={`${firstName} ${lastName}`} color="initials" />
+                <Avatar name={fullName} color="initials" />
               </Menu.Target>
 
               <Menu.Dropdown>

@@ -5,6 +5,7 @@ import React from 'react';
 import { Text, Paper, Stack, Group, Checkbox } from '@mantine/core';
 
 import { CreatorMainInfo } from './CreatorMainInfo';
+import { CreatorField } from './CreatorField';
 
 interface FormCreatorBoxProps {
   errorName: string
@@ -39,19 +40,7 @@ export const FormCreatorBox: React.FC<FormCreatorBoxProps> = ({
           handleCreateDescription={handleCreateDescription}
         />
 
-        <Paper shadow="xs" radius="md" p="xl" style={{width: '40%'}}>
-          <Stack>
-            <Text>Question without title</Text>
-
-            <Group>
-              <Checkbox
-                defaultChecked
-                radius="xl"
-              />
-                <Text>Option 1</Text>
-            </Group>
-          </Stack>
-        </Paper>
+        <CreatorField />
       </Stack>
     </div>
   )
