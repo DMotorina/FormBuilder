@@ -1,37 +1,21 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-import { useParams } from 'react-router-dom';
-import { FormCreator } from '../formCreator/FormCreator';
-import { FormEditor } from '../formEditor/FormEditor';
-import { getFormsDatas } from '../form/action';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { Form } from '../form/types';
+import { useParams } from 'react-router-dom'
 
-interface Params {
-    dashboardUuid: string | undefined
-    formUuid: string | undefined
-}  
+import { Creator } from './Creator'
+import { Editor } from './Editor'
 
-export const FormWrapper: React.FC = () => {
-    const dispatch = useAppDispatch();
+type FormWrapperProps = {
+    name: 'edit' | 'new'
+}
 
-    const { dashboardUuid, formUuid } = useParams<Params>()
+export const FormWrapper: React.FC<FormWrapperProps> = ({ name }) => {
+    const { dashboardUuid, formUuid } = useParams()
 
-    useEffect(() => {
-        dispatch(getFormsDatas())
-    }, [dispatch])
-
-    if(formUuid) {
-        const form = useAppSelector((state) => state.form.forms?.filter(f => f.uuid === formUuid))
-
-        return (
-            <>
-                {form?.map((values: Form) => (
-                    <FormEditor values={values} />
-                ))}
-            </>
-        )
+    const mapper: Record<'edit' | 'new', JSX.Element> = {
+        edit: <Editor formUuid={formUuid} />,
+        new: <Creator dashboardUuid={dashboardUuid} />,
     }
 
-    return <FormCreator dashboardUuid={dashboardUuid} />
+    return mapper[name]
 };

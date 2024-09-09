@@ -12,6 +12,26 @@ import { NotFound } from './pages/notFound/NotFound';
 import { Signup } from './pages/signup/Signup';
 import { FormWrapper } from './pages/formWrapper/FormWrapper';
 
+interface FormRouteInterface {
+  path: string
+  name: 'new' | 'edit'
+}
+
+const formRoutes: FormRouteInterface[] = [
+  { path: "/forms/:dashboardUuid?", name: "new" },
+  { path: "/forms/:formUuid/edit", name: "edit" },
+]
+
+const generateFormRoutes = (routes: FormRouteInterface[]): JSX.Element[] => {
+  return routes.map(({ path, name }) => (
+    <Route 
+      key={name} 
+      path={path} 
+      element={<FormWrapper name={name} />} 
+    />
+  ))
+}
+
 export const AppRoutes = () => {
     return (
       <BrowserRouter>
@@ -24,8 +44,7 @@ export const AppRoutes = () => {
                 <Route path="/" element={<MainPage />} />
               </Route>
             </Route>
-            <Route path="/forms/:dashboardUuid?" element={<FormWrapper  />} />
-            <Route path="/forms/:formUuid/edit" element={<FormWrapper />} />
+            {generateFormRoutes(formRoutes)}
             <Route path="*" element={<NotFound />} />
             <Route path="/signup" element={<Signup />} />
         </Routes>
