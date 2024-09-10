@@ -23,7 +23,7 @@ export const FormEditorWrapper: React.FC = () => {
     return (
         <>
             {form?.map((values: Form) => (
-                <FormEditor values={values} />
+                <FormEditor key={values.uuid} values={values} />
             ))}
         </>
     )

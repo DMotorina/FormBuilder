@@ -9,6 +9,7 @@ import { Group, Tabs } from '@mantine/core';
 
 import { Form } from './components/Form';
 import { AddForm } from './components/addForm';
+import { checkAuth } from '../login/action';
 
 interface FormsProps {
     name: string

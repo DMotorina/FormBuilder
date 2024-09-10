@@ -42,8 +42,8 @@ export const FormEditor: React.FC<{ values?: Form }> = ({ values }) => {
 
     const onUpdate = () => {
         if (name.length < 3) {
-        setErrorName('The name of form must contain at least 3 characters');
-        return; 
+            setErrorName('The name of form must contain at least 3 characters');
+            return; 
         }
 
         dispatch(updateForm({ 

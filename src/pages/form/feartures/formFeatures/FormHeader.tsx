@@ -1,11 +1,11 @@
 import './style.sass';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { Menu, Avatar, Input, ThemeIcon, Group, Button } from '@mantine/core';
 import { IconFileText } from '@tabler/icons-react';
 import { useAppDispatch, useAppSelector } from '../../../../hooks';
-import { logout } from '../../../login/action';
+import { checkAuth, logout } from '../../../login/action';
 
 interface FormHeaderProps {
   name: string
@@ -28,10 +28,12 @@ export const FormHeader: React.FC<FormHeaderProps> = ({
 }) => {
   const dispatch = useAppDispatch()
 
+  useEffect(() => {
+    dispatch(checkAuth());
+  }, [dispatch]);
+
   const firstName = useAppSelector((state) => state.user.data?.first_name);
   const lastName = useAppSelector((state) => state.user.data?.last_name);
-  const fullName = firstName && lastName ? `${firstName} ${lastName}` : 'User'; 
-  console.log('--fullName', fullName)
 
   return (
     <header className="header">
@@ -64,7 +66,7 @@ export const FormHeader: React.FC<FormHeaderProps> = ({
 
             <Menu shadow="md" width={200}>
               <Menu.Target>
-                <Avatar name={fullName} color="initials" />
+                <Avatar name={`${firstName} ${lastName}`} color="initials" />
               </Menu.Target>
 
               <Menu.Dropdown>

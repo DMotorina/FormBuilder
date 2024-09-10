@@ -1,8 +1,8 @@
 import '../style.sass';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 
-import { logout } from '../../login/action';
+import { checkAuth, logout } from '../../login/action';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
 
 import { useDisclosure } from '@mantine/hooks';
@@ -12,14 +12,15 @@ import { Menu, Burger, Container, Drawer, Input, Avatar } from '@mantine/core';
 export const HeaderForm: React.FC = () => {
   const dispatch = useAppDispatch()
 
+  useEffect(() => {
+    dispatch(checkAuth());
+  }, [dispatch]);
+
   const [opened, { open, close }] = useDisclosure(false);
 
   const firstName = useAppSelector((state) => state.user.data?.first_name);
   const lastName = useAppSelector((state) => state.user.data?.last_name);
-
-  const fullName = firstName && lastName ? `${firstName} ${lastName}` : 'User'; 
   
-
   return (
     <header className="header">
         <Container size="md">
@@ -34,7 +35,7 @@ export const HeaderForm: React.FC = () => {
 
             <Menu shadow="md" width={200}>
               <Menu.Target>
-                <Avatar name={fullName} color="initials" />
+                <Avatar name={`${firstName} ${lastName}`} color="initials" />
               </Menu.Target>
 
               <Menu.Dropdown>
