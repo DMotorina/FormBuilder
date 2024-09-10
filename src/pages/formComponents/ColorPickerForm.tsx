@@ -1,4 +1,4 @@
-import '../style.sass'
+import './style.sass'
 
 import React from 'react';
 
@@ -11,8 +11,6 @@ interface ColorPickerFormProps {
 
 export const ColorPickerForm: React.FC<ColorPickerFormProps> = ({ color, handlerColorChange }) => {
     return (
-        <>
-            <ColorPicker value={color} onChange={handlerColorChange} />
-        </>
+        <ColorPicker value={color} onChange={handlerColorChange} />
     )
 }

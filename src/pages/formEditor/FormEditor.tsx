@@ -5,10 +5,10 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { updateForm } from '../form/action';
-import { FormHeader } from '../formCreator/components/FormHeader';
-import { FormCreatorBox } from '../formCreator/components/FormCreatorBox';
-import { ColorPicker } from '../formCreator/components/ColorPicker';
+import { FormCreatorBox } from '../formComponents/FormCreatorBox';
+import { ColorPicker } from '../formComponents/ColorPicker';
 import { Form } from '../form/types';
+import { FormHeader } from '../formComponents/FormHeader';
 
 export const FormEditor: React.FC<{ values?: Form }> = ({ values }) => {  
     let { color, dashboard_uuid, description, is_active, name, structure, uuid } = values;
@@ -60,28 +60,27 @@ export const FormEditor: React.FC<{ values?: Form }> = ({ values }) => {
 
     return (
         <div className='formEditor' style={{ backgroundColor: defaultColor }} key={uuid}>
-        <FormHeader 
-            name={newName} 
-            defaultIconColor={defaultIconColor}
-            onSubmit={onUpdate} 
-            handleCreateName={handleCreateName} 
-        />
-        
-        <FormCreatorBox 
-            error={error}
-            errorName={errorName}
-            name={newName} 
-            description={newDescription}
-            handleCreateName={handleCreateName} 
-            handleCreateDescription={handleCreateDescription}
-        />
+            <FormHeader 
+                name={newName} 
+                defaultIconColor={defaultIconColor}
+                onSubmit={onUpdate} 
+                handleCreateName={handleCreateName} 
+            />
+            
+            <FormCreatorBox 
+                error={error}
+                errorName={errorName}
+                name={newName} 
+                description={newDescription}
+                handleCreateName={handleCreateName} 
+                handleCreateDescription={handleCreateDescription}
+            />
 
-        <ColorPicker 
-            color={defaultColor}
-            defaultIconColor={defaultIconColor}
-            handlerColorChange={handlerColorChange}
-        />
-
+            <ColorPicker 
+                color={defaultColor}
+                defaultIconColor={defaultIconColor}
+                handlerColorChange={handlerColorChange}
+            />
         </div>
     )
 }

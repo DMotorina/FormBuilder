@@ -1,11 +1,11 @@
-import '../style.sass';
+import './style.sass';
 
 import React from 'react';
 
 import { Menu, Avatar, Input, ThemeIcon, Group, Button } from '@mantine/core';
-import { useAppDispatch, useAppSelector } from '../../../hooks';
-import { logout } from '../../login/action';
 import { IconFileText } from '@tabler/icons-react';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { logout } from '../login/action';
 
 interface FormHeaderProps {
   name: string

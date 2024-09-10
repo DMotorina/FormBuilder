@@ -1,4 +1,4 @@
-import '../style.sass'
+import './style.sass'
 
 import React, { useEffect, useRef, useState } from 'react';
 
