@@ -6,7 +6,7 @@ import { Text, Paper } from '@mantine/core';
 
 import { useNavigate } from 'react-router-dom';
 import { Plus } from '../../../assets/plus';
-import { FormWrapper } from '../../formWrapper/FormWrapper';
+import { FormWrapper } from '../../formWrappers/FormWrapper';
 
 interface AddFormProps {
     dashboardUuid: string;

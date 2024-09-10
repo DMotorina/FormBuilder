@@ -59,7 +59,7 @@ export const FormEditor: React.FC<{ values?: Form }> = ({ values }) => {
     }
 
     return (
-        <div className='formCreator' style={{backgroundColor: defaultColor}} key={uuid}>
+        <div className='formEditor' style={{ backgroundColor: defaultColor }} key={uuid}>
         <FormHeader 
             name={newName} 
             defaultIconColor={defaultIconColor}
