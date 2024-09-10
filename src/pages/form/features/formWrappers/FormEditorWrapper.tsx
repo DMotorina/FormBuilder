@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react'
 
-import { Form } from '../form/types'
-import { getFormsDatas } from '../form/action'
-
-import { useAppDispatch, useAppSelector } from "../../hooks"
-
-import { FormEditor } from '../formEditor/FormEditor'
 import { useParams } from 'react-router-dom'
+
+import { Form } from '../../types';
+
+import { getFormsDatas } from '../../action';
+import { useAppDispatch, useAppSelector } from '../../../../hooks';
+
+import { FormEditor } from '../formEditor/FormEditor';
 
 export const FormEditorWrapper: React.FC = () => {
     const { formUuid } = useParams()

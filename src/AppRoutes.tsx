@@ -10,9 +10,8 @@ import { Login } from './pages/login/Login';
 import { MainPage } from './pages/mainPage/MainPage';
 import { NotFound } from './pages/notFound/NotFound';
 import { Signup } from './pages/signup/Signup';
-import { FormCreatorWrapper } from './pages/formWrappers/FormCreatorWrapper';
-import { FormEditorWrapper } from './pages/formWrappers/FormEditorWrapper';
-
+import { FormCreatorWrapper } from './pages/form/features/formWrappers/FormCreatorWrapper';
+import { FormEditorWrapper } from './pages/form/features/formWrappers/FormEditorWrapper';
 
 export const AppRoutes = () => {
     return (

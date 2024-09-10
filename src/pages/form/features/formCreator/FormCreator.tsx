@@ -4,11 +4,11 @@ import React, { useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
-import { FormCreatorBox } from '../formComponents/FormCreatorBox';
-import { ColorPicker } from '../formComponents/ColorPicker';
-import { createForm } from '../form/action';
-import { useAppDispatch } from '../../hooks';
-import { FormHeader } from '../formComponents/FormHeader';
+import { FormCreatorBox } from '../formFeatures/FormCreatorBox';
+import { ColorPicker } from '../formFeatures/ColorPicker';
+import { createForm } from '../../action';
+import { useAppDispatch } from '../../../../hooks';
+import { FormHeader } from '../formFeatures/FormHeader';
 
 export const FormCreator: React.FC<{ dashboardUuid?: string }> = ({ dashboardUuid }) => {  
   const dispatch = useAppDispatch();

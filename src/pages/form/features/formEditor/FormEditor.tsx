@@ -3,12 +3,12 @@ import './style.sass'
 import React, { useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { updateForm } from '../form/action';
-import { FormCreatorBox } from '../formComponents/FormCreatorBox';
-import { ColorPicker } from '../formComponents/ColorPicker';
-import { Form } from '../form/types';
-import { FormHeader } from '../formComponents/FormHeader';
+import { useAppDispatch, useAppSelector } from '../../../../hooks';
+import { updateForm } from '../../action';
+import { FormCreatorBox } from '../formFeatures/FormCreatorBox';
+import { ColorPicker } from '../formFeatures/ColorPicker';
+import { Form } from '../../types';
+import { FormHeader } from '../formFeatures/FormHeader';
 
 export const FormEditor: React.FC<{ values?: Form }> = ({ values }) => {  
     let { color, dashboard_uuid, description, is_active, name, structure, uuid } = values;
