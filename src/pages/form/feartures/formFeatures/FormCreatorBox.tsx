@@ -1,8 +1,8 @@
 import './style.sass'
 
-import React from 'react';
+import React, { useState } from 'react';
 
-import { Text, Paper, Stack, Group, Checkbox } from '@mantine/core';
+import { Text, Paper, Stack, Group, Checkbox, Button } from '@mantine/core';
 
 import { CreatorMainInfo } from './CreatorMainInfo';
 import { CreatorField } from './CreatorField';
@@ -24,6 +24,13 @@ export const FormCreatorBox: React.FC<FormCreatorBoxProps> = ({
   handleCreateName, 
   handleCreateDescription, 
 }) => {
+  const [fields, setFields] = useState<number[]>([1]);
+
+  const addField = () => {
+    setFields((prevFields) => [...prevFields, prevFields.length + 1]);
+  };
+
+
   return (
     <div className='formCreatorBox'>
       <Stack
@@ -40,7 +47,11 @@ export const FormCreatorBox: React.FC<FormCreatorBoxProps> = ({
           handleCreateDescription={handleCreateDescription}
         />
 
-        <CreatorField />
+        {fields.map((field, index) => (
+          <CreatorField key={index} />
+        ))}
+
+        <Button variant="outline" color="gray" radius="xl" onClick={addField}>+</Button>
       </Stack>
     </div>
   )
