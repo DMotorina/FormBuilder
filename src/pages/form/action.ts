@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { httpClient } from '../../shared/utils/httpClient';
+import { Structure } from './types';
 
 const config = {
   headers: {
@@ -27,19 +28,7 @@ export const createForm = createAsyncThunk<
     color: string;
     shared: boolean;
     dashboard_uuid: string;
-    structure: Array<{
-      slug: string;
-      label: string;
-      category: string;
-      params: {
-        required: boolean;
-        help_text: string;
-        default_value: any;
-        display_format?: string;
-        min_length?: number;
-        max_length?: number;
-      };
-    }>;
+    structure: Structure
   },
   {
     uuid: string;
@@ -48,19 +37,7 @@ export const createForm = createAsyncThunk<
     color: string;
     shared: boolean;
     dashboard_uuid: string;
-    structure: Array<{
-      slug: string;
-      label: string;
-      category: string;
-      params: {
-        required: boolean;
-        help_text: string;
-        default_value: any;
-        display_format?: string;
-        min_length?: number;
-        max_length?: number;
-      };
-    }>;
+    structure: Structure
   },
   { rejectValue: {} }
 >('form/createForm', 
@@ -87,19 +64,7 @@ export const updateForm = createAsyncThunk<
   color: string
   shared: boolean;
   dashboard_uuid: string
-  structure: Array<{
-    slug: string;
-    label: string;
-    category: string;
-    params: {
-      required: boolean;
-      help_text: string;
-      default_value: any;
-      display_format?: string;
-      min_length?: number;
-      max_length?: number;
-    };
-  }>;
+  structure: Structure
 },
 { uuid: string; 
   name: string
@@ -107,19 +72,7 @@ export const updateForm = createAsyncThunk<
   color: string
   shared: boolean;
   dashboard_uuid: string
-  structure: Array<{
-    slug: string;
-    label: string;
-    category: string;
-    params: {
-      required: boolean;
-      help_text: string;
-      default_value: any;
-      display_format?: string;
-      min_length?: number;
-      max_length?: number;
-    };
-  }>;
+  structure: Structure
 },{ rejectValue: {} }
 >(
   'dashboard/updateForm',

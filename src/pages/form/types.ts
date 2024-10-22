@@ -1,3 +1,30 @@
+type BooleanField = {
+  slug: string;
+  label: string;
+  category: boolean;
+  params: {
+    required: boolean;
+    help_text: string;
+    default_value: boolean;
+    display_format: string;
+  };
+};
+
+type StringField = {
+  slug: string;
+  label: string;
+  category: string;
+  params: {
+    required: boolean;
+    help_text: string;
+    default_value: string;
+    min_length: number;
+    max_length: number;
+  };
+};
+
+export type Structure = (BooleanField | StringField)[]
+
 export interface Form {
     uuid: string
     name: string
@@ -5,17 +32,5 @@ export interface Form {
     color: string
     shared: boolean
     dashboard_uuid: string
-    structure: Array<{
-      slug: string;
-      label: string;
-      category: string;
-      params: {
-        required: boolean;
-        help_text: string;
-        default_value: any;
-        display_format?: string;
-        min_length?: number;
-        max_length?: number;
-      };
-    }>;
+    structure: Structure
 }
