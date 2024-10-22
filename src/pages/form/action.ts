@@ -25,97 +25,50 @@ export const createForm = createAsyncThunk<
     name: string;
     description: string;
     color: string;
-    is_active: boolean;
+    shared: boolean;
     dashboard_uuid: string;
-    structure: [
-      {
-        slug: string
-        label: string
-        category: boolean
-        params: {
-          required: boolean
-          help_text: string
-          default_value: boolean
-          display_format: string
-        }
-      },
-      {
-        slug: string
-        label: string
-        category: string
-        params: {
-          required: boolean
-          help_text: string
-          default_value: string
-          min_length: number
-          max_length: number
-        }
-      },
-      {
-        slug: string
-        label: string
-        category: string
-        params: {
-          required: boolean
-          help_text: string
-          default_value: string
-          min_length: number
-          max_length: number
-        }
-      }
-    ]
+    structure: Array<{
+      slug: string;
+      label: string;
+      category: string;
+      params: {
+        required: boolean;
+        help_text: string;
+        default_value: any;
+        display_format?: string;
+        min_length?: number;
+        max_length?: number;
+      };
+    }>;
   },
   {
+    uuid: string;
     name: string;
     description: string;
     color: string;
-    is_active: boolean;
+    shared: boolean;
     dashboard_uuid: string;
-    structure: [
-      {
-        slug: string
-        label: string
-        category: boolean
-        params: {
-          required: boolean
-          help_text: string
-          default_value: boolean
-          display_format: string
-        }
-      },
-      {
-        slug: string
-        label: string
-        category: string
-        params: {
-          required: boolean
-          help_text: string
-          default_value: string
-          min_length: number
-          max_length: number
-        }
-      },
-      {
-        slug: string
-        label: string
-        category: string
-        params: {
-          required: boolean
-          help_text: string
-          default_value: string
-          min_length: number
-          max_length: number
-        }
-      }
-    ]
+    structure: Array<{
+      slug: string;
+      label: string;
+      category: string;
+      params: {
+        required: boolean;
+        help_text: string;
+        default_value: any;
+        display_format?: string;
+        min_length?: number;
+        max_length?: number;
+      };
+    }>;
   },
   { rejectValue: {} }
 >('form/createForm', 
-  async ({ name, description, color, is_active, dashboard_uuid }, { rejectWithValue }) => {
+  async ({ name, description, color, shared, dashboard_uuid, structure }, { rejectWithValue }) => {
     try {
       const response = await httpClient.post(
         '/api/v1/forms/', 
-        { name, description, color, is_active, dashboard_uuid },
+        { name, description, color, shared, dashboard_uuid, structure },
         config
       )
 
@@ -132,97 +85,49 @@ export const updateForm = createAsyncThunk<
   name: string
   description: string
   color: string
-  is_active: boolean
+  shared: boolean;
   dashboard_uuid: string
-  structure: [
-  {
-    slug: string
-    label: string
-    category: boolean
+  structure: Array<{
+    slug: string;
+    label: string;
+    category: string;
     params: {
-      required: boolean
-      help_text: string
-      default_value: boolean
-      display_format: string
-    }
-  },
-  {
-    slug: string
-    label: string
-    category: string
-    params: {
-      required: boolean
-      help_text: string
-      default_value: string
-      min_length: number
-      max_length: number
-    }
-  },
-  {
-    slug: string
-    label: string
-    category: string
-    params: {
-      required: boolean
-      help_text: string
-      default_value: string
-      min_length: number
-      max_length: number
-    }
-  }
-  ] 
+      required: boolean;
+      help_text: string;
+      default_value: any;
+      display_format?: string;
+      min_length?: number;
+      max_length?: number;
+    };
+  }>;
 },
 { uuid: string; 
   name: string
   description: string
   color: string
-  is_active: boolean
+  shared: boolean;
   dashboard_uuid: string
-  structure: [
-  {
-    slug: string
-    label: string
-    category: boolean
+  structure: Array<{
+    slug: string;
+    label: string;
+    category: string;
     params: {
-      required: boolean
-      help_text: string
-      default_value: boolean
-      display_format: string
-    }
-  },
-  {
-    slug: string
-    label: string
-    category: string
-    params: {
-      required: boolean
-      help_text: string
-      default_value: string
-      min_length: number
-      max_length: number
-    }
-  },
-  {
-    slug: string
-    label: string
-    category: string
-    params: {
-      required: boolean
-      help_text: string
-      default_value: string
-      min_length: number
-      max_length: number
-    }
-  }
-  ] 
+      required: boolean;
+      help_text: string;
+      default_value: any;
+      display_format?: string;
+      min_length?: number;
+      max_length?: number;
+    };
+  }>;
 },{ rejectValue: {} }
 >(
   'dashboard/updateForm',
-  async ({ uuid, name, description, color, is_active, dashboard_uuid, structure }, { rejectWithValue }) => {
+  async ({ uuid, name, description, color, shared, dashboard_uuid, structure }, { rejectWithValue }) => {
     try {
       const response = await httpClient.put(
         `/api/v1/forms/${uuid}`, 
-        { name, description, color, is_active, dashboard_uuid, structure },
+        { name, description, color, shared, dashboard_uuid, structure },
         config
       )
 

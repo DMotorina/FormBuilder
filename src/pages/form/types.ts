@@ -3,43 +3,19 @@ export interface Form {
     name: string
     description: string
     color: string
-    is_active: boolean
+    shared: boolean
     dashboard_uuid: string
-    structure: [
-    {
-      slug: string
-      label: string
-      category: boolean
+    structure: Array<{
+      slug: string;
+      label: string;
+      category: string;
       params: {
-        required: boolean
-        help_text: string
-        default_value: boolean
-        display_format: string
-      }
-    },
-    {
-      slug: string
-      label: string
-      category: string
-      params: {
-        required: boolean
-        help_text: string
-        default_value: string
-        min_length: number
-        max_length: number
-      }
-    },
-    {
-      slug: string
-      label: string
-      category: string
-      params: {
-        required: boolean
-        help_text: string
-        default_value: string
-        min_length: number
-        max_length: number
-      }
-    }
-  ]
+        required: boolean;
+        help_text: string;
+        default_value: any;
+        display_format?: string;
+        min_length?: number;
+        max_length?: number;
+      };
+    }>;
 }

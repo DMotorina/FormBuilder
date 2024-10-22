@@ -45,7 +45,22 @@ export const FormCreator: React.FC<{ dashboardUuid?: string }> = ({ dashboardUui
       return; 
     }
 
-    dispatch(createForm({ name, description, color, is_active: false, dashboard_uuid: dashboardUuid }));
+    
+
+    dispatch(createForm({ name, description, color, shared: false, dashboard_uuid: dashboardUuid, structure: [
+      {
+          slug: 'checkbox',
+          label: 'Checkbox Field',
+          category: 'boolean', 
+          params: {
+              required: true,
+              help_text: '',
+              default_value: true,
+              display_format: 'check'
+          }
+      }
+    ]
+  }));
     navigate('/');
   }
 
